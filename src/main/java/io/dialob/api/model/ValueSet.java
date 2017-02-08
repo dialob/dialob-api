@@ -43,6 +43,14 @@ public class ValueSet implements Serializable {
     this.id = id;
   }
 
+  public List<Entry> getEntries() {
+    return entries;
+  }
+
+  public void setEntries(List<Entry> entries) {
+    this.entries = entries;
+  }
+
   public static class Entry implements Serializable, Cloneable {
 
     private String key;
