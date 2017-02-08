@@ -153,9 +153,6 @@ public class Question implements Serializable {
   }
 
   public Map<String, Object> getProps() {
-    if (props == null) {
-      return Collections.emptyMap();
-    }
     return props;
   }
 

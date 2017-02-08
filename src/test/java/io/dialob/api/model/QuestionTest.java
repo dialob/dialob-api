@@ -41,7 +41,7 @@ public class QuestionTest {
     question = objectMapper.readValue("{\"props\":{\"extraProp\":[]}}", Question.class);
     assertEquals(Collections.emptyList(), question.getProps().get("extraProp"));
     question = objectMapper.readValue("{}", Question.class);
-    assertEquals(null, question.getProps().get("extraProp"));
+    assertEquals(null, question.getProps());
   }
   @Test
   public void shouldSeralizeMapToProps() throws Exception {
@@ -50,6 +50,8 @@ public class QuestionTest {
     question.setProps(new HashMap<>());
     question.getProps().put("extraProp","extraValue");
     assertEquals("{\"readOnly\":false,\"answered\":false,\"props\":{\"extraProp\":\"extraValue\"}}", objectMapper.writeValueAsString(question));
+    question = new Question();
+    assertEquals("{\"readOnly\":false,\"answered\":false}", objectMapper.writeValueAsString(question));
   }
 
 }
