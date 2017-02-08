@@ -85,19 +85,19 @@ public class Action implements Serializable {
 
   private Instant timestamp;
 
-  private List<ValueEntry> valueSet;
-
   private String valueSetId;
 
   private List<String> ids;
 
   private Object value;
 
-  public void setValueSet(List<ValueEntry> valueSet) {
+  private ValueSet valueSet;
+
+  public void setValueSet(ValueSet valueSet) {
     this.valueSet = valueSet;
   }
 
-  public List<ValueEntry> getValueSet() {
+  public ValueSet getValueSet() {
     return valueSet;
   }
 

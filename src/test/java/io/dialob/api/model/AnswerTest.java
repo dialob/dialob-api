@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.dialob.api.entity;
+package io.dialob.api.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
