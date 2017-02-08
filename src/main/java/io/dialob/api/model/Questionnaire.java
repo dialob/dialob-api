@@ -1,14 +1,15 @@
 package io.dialob.api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Questionnaire extends Document {
@@ -30,6 +31,7 @@ public class Questionnaire extends Document {
   @NotNull
   private Metadata metadata;
 
+  @JsonInclude(JsonInclude.Include.NON_NULL)
   public static class Metadata implements Serializable {
 
     public enum Status {
@@ -62,6 +64,9 @@ public class Questionnaire extends Document {
 
     @JsonProperty("language")
     private String language;
+
+    @JsonInclude
+    private Map<String,String> additionalProperties = new HashMap<>();
 
     public Metadata withFormRev(String formRev) {
       this.formRev = formRev;
@@ -166,6 +171,16 @@ public class Questionnaire extends Document {
     public void setLanguage(String language) {
       this.language = language;
     }
+
+    @JsonAnyGetter
+    public Map<String, String> getAdditionalProperties() {
+      return additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, String value) {
+      additionalProperties.put(name, value);
+    }
   }
 
   public List<Answer> getAnswers() {
@@ -207,5 +222,6 @@ public class Questionnaire extends Document {
   public void setMetadata(Metadata metadata) {
     this.metadata = metadata;
   }
+
 
 }
