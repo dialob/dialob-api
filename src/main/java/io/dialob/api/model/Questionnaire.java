@@ -47,6 +47,9 @@ public class Questionnaire extends Document {
     @JsonProperty("formRev")
     private String formRev;
 
+    @JsonProperty("tenantId")
+    private String tenantId;
+
     @JsonProperty("created")
     private Instant created;
 
@@ -73,13 +76,13 @@ public class Questionnaire extends Document {
       return this;
     }
 
-    public Metadata withFormId(String formId) {
-      this.formId = formId;
+    public Metadata withCreated(Instant created) {
+      this.created = created;
       return this;
     }
 
-    public Metadata withCreated(Instant created) {
-      this.created = created;
+    public Metadata withTenantId(String tenantId) {
+      this.tenantId = tenantId;
       return this;
     }
 
@@ -130,6 +133,14 @@ public class Questionnaire extends Document {
 
     public Instant getCreated() {
       return created;
+    }
+
+    public String getTenantId() {
+      return tenantId;
+    }
+
+    public void setTenantId(String tenantId) {
+      this.tenantId = tenantId;
     }
 
     public Instant getLastAnswer() {
