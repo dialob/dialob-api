@@ -69,7 +69,7 @@ public class Questionnaire extends Document {
     private String language;
 
     @JsonInclude
-    private Map<String,String> additionalProperties = new HashMap<>();
+    private Map<String,Object> additionalProperties = new HashMap<>();
 
     public Metadata withFormRev(String formRev) {
       this.formRev = formRev;
@@ -184,7 +184,7 @@ public class Questionnaire extends Document {
     }
 
     @JsonAnyGetter
-    public Map<String, String> getAdditionalProperties() {
+    public Map<String, Object> getAdditionalProperties() {
       return additionalProperties;
     }
 
