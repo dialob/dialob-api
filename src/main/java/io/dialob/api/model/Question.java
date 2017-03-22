@@ -36,6 +36,8 @@ public class Question implements Serializable {
 
   private String type;
 
+  private Boolean active;
+
   private List<String> className;
 
   private Object value;
@@ -86,6 +88,14 @@ public class Question implements Serializable {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+  public Boolean getActive() {
+    return active;
+  }
+
+  public void setActive(Boolean active) {
+    this.active = active;
   }
 
   public List<String> getClassName() {
@@ -165,6 +175,7 @@ public class Question implements Serializable {
     return new ToStringBuilder(this)
       .append("id", id)
       .append("type", type)
+      .append("active", active)
       .append("label", label)
       .append("className", className)
       .append("value", value)
