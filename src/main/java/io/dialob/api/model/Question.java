@@ -18,7 +18,6 @@ package io.dialob.api.model;
 
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -36,7 +35,7 @@ public class Question implements Serializable {
 
   private String type;
 
-  private Boolean active;
+  private Boolean inactive;
 
   private List<String> className;
 
@@ -90,12 +89,12 @@ public class Question implements Serializable {
     this.type = type;
   }
 
-  public Boolean getActive() {
-    return active;
+  public Boolean getInactive() {
+    return inactive;
   }
 
-  public void setActive(Boolean active) {
-    this.active = active;
+  public void setInactive(Boolean inactive) {
+    this.inactive = inactive;
   }
 
   public List<String> getClassName() {
@@ -175,7 +174,7 @@ public class Question implements Serializable {
     return new ToStringBuilder(this)
       .append("id", id)
       .append("type", type)
-      .append("active", active)
+      .append("active", inactive)
       .append("label", label)
       .append("className", className)
       .append("value", value)
