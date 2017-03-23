@@ -68,6 +68,9 @@ public class Questionnaire extends Document {
     @JsonProperty("language")
     private String language;
 
+    @JsonProperty("showInactive")
+    private Boolean showInactive;
+
     @JsonInclude
     private Map<String,Object> additionalProperties = new HashMap<>();
 
@@ -108,6 +111,11 @@ public class Questionnaire extends Document {
 
     public Metadata withLanguage(String language) {
       this.language = language;
+      return this;
+    }
+
+    public Metadata withShowInactive(Boolean showInactive) {
+      this.showInactive = showInactive;
       return this;
     }
 
@@ -181,6 +189,14 @@ public class Questionnaire extends Document {
 
     public void setLanguage(String language) {
       this.language = language;
+    }
+
+    public Boolean getShowInactive() {
+      return showInactive;
+    }
+
+    public void setShowInactive(Boolean showInactive) {
+      this.showInactive = showInactive;
     }
 
     @JsonAnyGetter
