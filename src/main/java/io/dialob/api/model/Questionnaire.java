@@ -74,6 +74,11 @@ public class Questionnaire extends Document {
     @JsonInclude
     private Map<String,Object> additionalProperties = new HashMap<>();
 
+    public Metadata withFormId(String formId) {
+      this.formId = formId;
+      return this;
+    }
+
     public Metadata withFormRev(String formRev) {
       this.formRev = formRev;
       return this;
