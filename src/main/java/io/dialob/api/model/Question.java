@@ -35,7 +35,7 @@ public class Question implements Serializable {
 
   private String type;
 
-  private Boolean inactive;
+  private Boolean disabled;
 
   private List<String> className;
 
@@ -89,12 +89,12 @@ public class Question implements Serializable {
     this.type = type;
   }
 
-  public Boolean getInactive() {
-    return inactive;
+  public Boolean getDisabled() {
+    return disabled;
   }
 
-  public void setInactive(Boolean inactive) {
-    this.inactive = inactive;
+  public void setDisabled(Boolean disabled) {
+    this.disabled = disabled;
   }
 
   public List<String> getClassName() {
@@ -174,7 +174,7 @@ public class Question implements Serializable {
     return new ToStringBuilder(this)
       .append("id", id)
       .append("type", type)
-      .append("inactive", inactive)
+      .append("disabled", disabled)
       .append("label", label)
       .append("className", className)
       .append("value", value)
