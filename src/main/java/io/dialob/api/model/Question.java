@@ -174,7 +174,7 @@ public class Question implements Serializable {
     return new ToStringBuilder(this)
       .append("id", id)
       .append("type", type)
-      .append("active", inactive)
+      .append("inactive", inactive)
       .append("label", label)
       .append("className", className)
       .append("value", value)
