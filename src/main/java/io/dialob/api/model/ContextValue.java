@@ -44,6 +44,16 @@ public class ContextValue implements Serializable {
     this.value = value;
   }
 
+  public ContextValue withId(String id) {
+    this.id = id;
+    return this;
+  }
+
+  public ContextValue withValue(String value) {
+    this.value = value;
+    return this;
+  }
+
   @Override
   public boolean equals(Object obj) {
     if (obj == null || !(obj instanceof Answer)) {
