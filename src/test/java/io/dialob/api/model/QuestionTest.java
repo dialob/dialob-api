@@ -49,9 +49,9 @@ public class QuestionTest {
     Question question = new Question();
     question.setProps(new HashMap<>());
     question.getProps().put("extraProp","extraValue");
-    assertEquals("{\"readOnly\":false,\"answered\":false,\"props\":{\"extraProp\":\"extraValue\"}}", objectMapper.writeValueAsString(question));
+    assertEquals("{\"answered\":false,\"props\":{\"extraProp\":\"extraValue\"}}", objectMapper.writeValueAsString(question));
     question = new Question();
-    assertEquals("{\"readOnly\":false,\"answered\":false}", objectMapper.writeValueAsString(question));
+    assertEquals("{\"answered\":false}", objectMapper.writeValueAsString(question));
   }
 
 }
