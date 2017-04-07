@@ -29,6 +29,16 @@ public class Answer implements Serializable {
 
   private Object value;
 
+  public Answer withId(String id) {
+    this.id = id;
+    return this;
+  }
+
+  public Answer withValue(Object value) {
+    this.value = value;
+    return this;
+  }
+
   public String getId() {
     return id;
   }
