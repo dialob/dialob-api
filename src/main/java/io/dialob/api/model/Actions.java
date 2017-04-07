@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2017 ReSys OÜ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -92,9 +91,8 @@ public class Actions implements Serializable, Cloneable {
   }
 
   public Actions withActions(List<Action> filteredActions) {
-    Actions actions = null;
     try {
-      actions = (Actions) this.clone();
+      Actions actions = (Actions) this.clone();
       actions.setActions(filteredActions);
       return actions;
     } catch (CloneNotSupportedException e) {

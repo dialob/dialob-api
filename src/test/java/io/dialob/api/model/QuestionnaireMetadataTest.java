@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2017 ReSys OÜ
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class QuestionnaireMetadataTest {
   @Test
-  public void shouldDeseralizeUnknownAttributesToAdditionalProperties() throws Exception {
+  public void shouldDeserializeUnknownAttributesToAdditionalProperties() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
     Questionnaire.Metadata metadata = objectMapper.readValue("{\"extraProp\":\"extraValue\"}", Questionnaire.Metadata.class);
     assertTrue(metadata.getAdditionalProperties().size() > 0);
     assertEquals("extraValue", metadata.getAdditionalProperties().get("extraProp"));
   }
   @Test
-  public void shouldSeralizeAdditionalPropertiesToJsonAttributes() throws Exception {
+  public void shouldSerializeAdditionalPropertiesToJsonAttributes() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
     Questionnaire.Metadata metadata = new Questionnaire.Metadata();
     metadata.setAdditionalProperty("extraProp","extraValue");

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2017 ReSys OÜ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package io.dialob.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -76,13 +75,12 @@ public class Action implements Serializable {
 
   private String page;
 
+  @JsonIgnore
   private Boolean serverEvent;
 
   private String resourceId;
 
   private String formId;
-
-  private Instant timestamp;
 
   private String valueSetId;
 
@@ -172,10 +170,12 @@ public class Action implements Serializable {
     return answer;
   }
 
+  @JsonIgnore
   public Boolean getServerEvent() {
     return serverEvent;
   }
 
+  @JsonIgnore
   public void setServerEvent(Boolean serverEvent) {
     this.serverEvent = serverEvent;
   }
@@ -210,14 +210,6 @@ public class Action implements Serializable {
 
   public String getTrace() {
     return trace;
-  }
-
-  public void setTimestamp(Instant timestamp) {
-    this.timestamp = timestamp;
-  }
-
-  public Instant getTimestamp() {
-    return timestamp;
   }
 
   public List<String> getIds() {

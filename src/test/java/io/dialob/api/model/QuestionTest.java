@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2017 ReSys OÜ
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,11 +21,11 @@ import org.junit.Test;
 import java.util.Collections;
 import java.util.HashMap;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class QuestionTest {
   @Test
-  public void shouldDeseralizePropsToMap() throws Exception {
+  public void shouldDeserializePropsToMap() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
     Question question = objectMapper.readValue("{\"props\":{\"extraProp\":\"extraValue\"}}", Question.class);
     assertEquals("extraValue", question.getProps().get("extraProp"));
@@ -44,10 +43,10 @@ public class QuestionTest {
     assertEquals(null, question.getProps());
   }
   @Test
-  public void shouldSeralizeMapToProps() throws Exception {
+  public void shouldSerializeMapToProps() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
     Question question = new Question();
-    question.setProps(new HashMap<>());
+    question.setProps(new HashMap<String,Object>());
     question.getProps().put("extraProp","extraValue");
     assertEquals("{\"answered\":false,\"props\":{\"extraProp\":\"extraValue\"}}", objectMapper.writeValueAsString(question));
     question = new Question();

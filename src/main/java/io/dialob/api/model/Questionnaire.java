@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2017 ReSys OÜ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.annotation.*;
@@ -21,23 +20,19 @@ import com.fasterxml.jackson.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Questionnaire extends Document {
 
   @JsonProperty("answers")
-  private List<Answer> answers = new ArrayList<>();
+  private List<Answer> answers = new ArrayList<Answer>();
 
   @JsonProperty("tables")
-  private List<Table> tables = new ArrayList<>();
+  private List<Table> tables = new ArrayList<Table>();
 
   @JsonProperty("context")
-  private List<ContextValue> contextValues = new ArrayList<>();
+  private List<ContextValue> contextValues = new ArrayList<ContextValue>();
 
   @JsonProperty("activeItem")
   private String activeItem;
@@ -72,10 +67,10 @@ public class Questionnaire extends Document {
     private String tenantId;
 
     @JsonProperty("created")
-    private Instant created;
+    private Date created;
 
     @JsonProperty("lastAnswer")
-    private Instant lastAnswer;
+    private Date lastAnswer;
 
     @JsonProperty("label")
     private String label;
@@ -96,7 +91,7 @@ public class Questionnaire extends Document {
     private String language;
 
     @JsonInclude
-    private Map<String, Object> additionalProperties = new HashMap<>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public Metadata withFormId(String formId) {
       this.formId = formId;
@@ -108,7 +103,7 @@ public class Questionnaire extends Document {
       return this;
     }
 
-    public Metadata withCreated(Instant created) {
+    public Metadata withCreated(Date created) {
       this.created = created;
       return this;
     }
@@ -118,7 +113,7 @@ public class Questionnaire extends Document {
       return this;
     }
 
-    public Metadata withLastAnswer(Instant lastAnswer) {
+    public Metadata withLastAnswer(Date lastAnswer) {
       this.lastAnswer = lastAnswer;
       return this;
     }
@@ -164,11 +159,11 @@ public class Questionnaire extends Document {
       this.formId = formId;
     }
 
-    public void setCreated(Instant created) {
+    public void setCreated(Date created) {
       this.created = created;
     }
 
-    public Instant getCreated() {
+    public Date getCreated() {
       return created;
     }
 
@@ -180,11 +175,11 @@ public class Questionnaire extends Document {
       this.tenantId = tenantId;
     }
 
-    public Instant getLastAnswer() {
+    public Date getLastAnswer() {
       return lastAnswer;
     }
 
-    public void setLastAnswer(Instant lastAnswer) {
+    public void setLastAnswer(Date lastAnswer) {
       this.lastAnswer = lastAnswer;
     }
 

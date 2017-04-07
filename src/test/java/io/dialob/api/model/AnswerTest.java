@@ -1,4 +1,4 @@
-/**
+/*
  *  Copyright 2017 ReSys OÜ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,13 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import io.dialob.api.model.Answer;
-
 import org.junit.Test;
 
 import java.util.Arrays;
