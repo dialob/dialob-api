@@ -53,13 +53,13 @@ public class Questionnaire extends Document {
     public enum Status {
       NEW,
       OPEN,
-      SKIPPED,
-      CANCELLED,
       COMPLETED
     }
 
-    @JsonProperty("reason")
-    private String reason;
+    public enum Reason {
+      SKIPPED,
+      CANCELLED
+    }
 
     @JsonProperty("formId")
     @NotNull
@@ -85,6 +85,12 @@ public class Questionnaire extends Document {
 
     @JsonProperty("status")
     private Status status;
+
+    /**
+     * Completion reason, null if normally completed.
+     */
+    @JsonProperty("reason")
+    private Reason reason;
 
     @JsonProperty("language")
     private String language;
@@ -132,7 +138,7 @@ public class Questionnaire extends Document {
       return this;
     }
 
-    public Metadata withReason(String reason) {
+    public Metadata withReason(Reason reason) {
       this.reason = reason;
       return this;
     }
@@ -206,11 +212,11 @@ public class Questionnaire extends Document {
       this.status = status;
     }
 
-    public String getReason() {
+    public Reason getReason() {
       return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(Reason reason) {
       this.reason = reason;
     }
 
