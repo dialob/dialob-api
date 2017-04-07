@@ -1,11 +1,11 @@
 /**
- *  Copyright 2017 ReSys OÜ
+ * Copyright 2017 ReSys OÜ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,12 +16,12 @@
 
 package io.dialob.api.model;
 
-import static org.apache.commons.lang3.StringUtils.join;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import static org.apache.commons.lang3.StringUtils.join;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Table implements Serializable {
@@ -29,6 +29,16 @@ public class Table implements Serializable {
   private String tableId;
 
   private List<String> rows;
+
+  public Table withTableId(String tableId) {
+    this.tableId = tableId;
+    return this;
+  }
+
+  public Table withRows(List<String> rows) {
+    this.rows = rows;
+    return this;
+  }
 
   public void setTableId(String tableId) {
     this.tableId = tableId;

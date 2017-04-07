@@ -1,12 +1,12 @@
 /**
  * Copyright 2017 ReSys OÜ
- * <p>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,15 +16,13 @@
 
 package io.dialob.api.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Question implements Serializable {
@@ -40,8 +38,6 @@ public class Question implements Serializable {
   private List<String> className;
 
   private Object value;
-
-  private boolean readOnly;
 
   private List<String> items;
 
@@ -113,14 +109,6 @@ public class Question implements Serializable {
     this.value = value;
   }
 
-  public boolean isReadOnly() {
-    return readOnly;
-  }
-
-  public void setReadOnly(boolean readOnly) {
-    this.readOnly = readOnly;
-  }
-
   public void setActiveItem(String activeItem) {
     this.activeItem = activeItem;
   }
@@ -178,7 +166,6 @@ public class Question implements Serializable {
       .append("label", label)
       .append("className", className)
       .append("value", value)
-      .append("readOnly", readOnly)
       .append("items", items)
       .append("activeItem", activeItem)
       .append("allowedActions", allowedActions)

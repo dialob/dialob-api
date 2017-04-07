@@ -1,12 +1,12 @@
 /**
  * Copyright 2017 ReSys OÜ
- * <p>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -35,6 +35,16 @@ public class ValueSet implements Serializable {
     this.entries = entries;
   }
 
+  public ValueSet withId(String id) {
+    this.id = id;
+    return this;
+  }
+
+  public ValueSet withEntries(List<Entry> entries) {
+    this.entries = entries;
+    return this;
+  }
+
   public String getId() {
     return id;
   }
@@ -57,10 +67,11 @@ public class ValueSet implements Serializable {
 
     private String value;
 
-    public Entry() {}
+    public Entry() {
+    }
 
     public Entry(String key) {
-      this(key,key);
+      this(key, key);
     }
 
     public Entry(String key, String value) {
@@ -110,8 +121,8 @@ public class ValueSet implements Serializable {
     @Override
     public String toString() {
       return new ToStringBuilder(this)
-        .append("key",key)
-        .append("value",value)
+        .append("key", key)
+        .append("value", value)
         .build();
     }
   }
