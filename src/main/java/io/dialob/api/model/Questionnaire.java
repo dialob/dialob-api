@@ -16,6 +16,9 @@
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Reference;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -58,6 +61,7 @@ public class Questionnaire extends Document {
 
     @JsonProperty("formId")
     @NotNull
+    @Reference
     private String formId;
 
     @JsonProperty("formRev")
@@ -67,9 +71,11 @@ public class Questionnaire extends Document {
     private String tenantId;
 
     @JsonProperty("created")
+    @CreatedDate
     private Date created;
 
     @JsonProperty("lastAnswer")
+    @LastModifiedDate
     private Date lastAnswer;
 
     @JsonProperty("label")
