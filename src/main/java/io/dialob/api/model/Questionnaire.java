@@ -61,7 +61,6 @@ public class Questionnaire extends Document {
 
     @JsonProperty("formId")
     @NotNull
-    @Reference
     private String formId;
 
     @JsonProperty("formRev")
@@ -75,7 +74,6 @@ public class Questionnaire extends Document {
     private Date created;
 
     @JsonProperty("lastAnswer")
-    @LastModifiedDate
     private Date lastAnswer;
 
     @JsonProperty("label")
