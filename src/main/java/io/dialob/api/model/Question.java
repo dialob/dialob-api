@@ -30,6 +30,8 @@ public class Question implements Serializable {
 
   private String label;
 
+  private String description;
+
   private String type;
 
   private Boolean disabled;
@@ -74,6 +76,14 @@ public class Question implements Serializable {
 
   public void setLabel(String label) {
     this.label = label;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public String getType() {
@@ -163,6 +173,7 @@ public class Question implements Serializable {
       .append("type", type)
       .append("disabled", disabled)
       .append("label", label)
+      .append("description", description)
       .append("className", className)
       .append("value", value)
       .append("items", items)
