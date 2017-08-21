@@ -40,6 +40,12 @@ public class Questionnaire extends Document {
   @JsonProperty("activeItem")
   private String activeItem;
 
+  @JsonProperty("errors")
+  private List<Error> errors;
+
+  @JsonProperty("variableValues")
+  private List<VariableValue> variableValues;
+
   @JsonProperty("metadata")
   @Valid
   @NotNull
@@ -268,6 +274,22 @@ public class Questionnaire extends Document {
 
   public void setActiveItem(String activeItem) {
     this.activeItem = activeItem;
+  }
+
+  public List<Error> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<Error> errors) {
+    this.errors = errors;
+  }
+
+  public List<VariableValue> getVariableValues() {
+    return variableValues;
+  }
+
+  public void setVariableValues(List<VariableValue> variableValues) {
+    this.variableValues = variableValues;
   }
 
   public Metadata getMetadata() {
