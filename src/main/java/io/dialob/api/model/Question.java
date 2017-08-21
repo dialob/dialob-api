@@ -48,7 +48,7 @@ public class Question implements Serializable {
 
   private Set<Action.Type> allowedActions;
 
-  private boolean answered;
+  private Boolean answered;
 
   private String valueSetId;
 
@@ -139,7 +139,7 @@ public class Question implements Serializable {
   }
 
   public boolean isAnswered() {
-    return answered;
+    return answered != null && answered;
   }
 
   public Set<Action.Type> getAllowedActions() {
