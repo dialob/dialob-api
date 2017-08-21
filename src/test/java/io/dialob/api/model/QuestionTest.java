@@ -48,9 +48,9 @@ public class QuestionTest {
     Question question = new Question();
     question.setProps(new HashMap<String,Object>());
     question.getProps().put("extraProp","extraValue");
-    assertEquals("{\"answered\":false,\"props\":{\"extraProp\":\"extraValue\"}}", objectMapper.writeValueAsString(question));
+    assertEquals("{\"props\":{\"extraProp\":\"extraValue\"}}", objectMapper.writeValueAsString(question));
     question = new Question();
-    assertEquals("{\"answered\":false}", objectMapper.writeValueAsString(question));
+    assertEquals("{}", objectMapper.writeValueAsString(question));
   }
 
 }

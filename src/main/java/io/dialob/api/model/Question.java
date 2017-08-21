@@ -134,8 +134,12 @@ public class Question implements Serializable {
     return availableItems;
   }
 
-  public void setAnswered(boolean answered) {
+  public void setAnswered(Boolean answered) {
     this.answered = answered;
+  }
+
+  public Boolean getAnswered() {
+    return answered;
   }
 
   public boolean isAnswered() {
