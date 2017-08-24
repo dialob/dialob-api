@@ -100,6 +100,18 @@ public class Questionnaire extends Document {
     @JsonProperty("language")
     private String language;
 
+    /**
+     * userId of document owner
+     */
+    @JsonProperty("owner")
+    private String owner;
+
+    /**
+     * userId of one who created questionnaire
+     */
+    @JsonProperty("creator")
+    private String creator;
+
     @JsonInclude
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -152,6 +164,17 @@ public class Questionnaire extends Document {
       this.language = language;
       return this;
     }
+
+    public Metadata withOwner(String owner) {
+      this.owner = owner;
+      return this;
+    }
+
+    public Metadata withCreator(String creator) {
+      this.creator = creator;
+      return this;
+    }
+
 
     public String getFormRev() {
       return formRev;
@@ -231,6 +254,22 @@ public class Questionnaire extends Document {
 
     public void setLanguage(String language) {
       this.language = language;
+    }
+
+    public String getOwner() {
+      return owner;
+    }
+
+    public void setOwner(String owner) {
+      this.owner = owner;
+    }
+
+    public String getCreator() {
+      return creator;
+    }
+
+    public void setCreator(String creator) {
+      this.creator = creator;
     }
 
     @JsonAnyGetter
