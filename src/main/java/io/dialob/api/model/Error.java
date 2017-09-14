@@ -16,6 +16,8 @@
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
@@ -76,4 +78,31 @@ public class Error implements Serializable {
       .toString();
   }
 
+
+  @Override
+  public boolean equals(final Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    if (obj == this) {
+      return true;
+    }
+    if (!(obj instanceof Error)) {
+      return false;
+    }
+    final Error other = (Error) obj;
+    return new EqualsBuilder()
+      .append(id, other.id)
+      .append(code, other.code)
+      .append(description, other.description)
+      .build();
+  }
+
+  @Override
+  public int hashCode() {
+    return new HashCodeBuilder()
+      .append(id)
+      .append(code)
+      .append(description).build();
+  }
 }
