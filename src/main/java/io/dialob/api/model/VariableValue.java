@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class VariableValue implements Serializable {
   private String id;
 
-  private String value;
+  private Object value;
 
   public String getId() {
     return id;
@@ -19,11 +19,11 @@ public class VariableValue implements Serializable {
     this.id = id;
   }
 
-  public String getValue() {
+  public Object getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(Object value) {
     this.value = value;
   }
 
@@ -32,7 +32,7 @@ public class VariableValue implements Serializable {
     return this;
   }
 
-  public VariableValue withValue(String value) {
+  public VariableValue withValue(Object value) {
     this.value = value;
     return this;
   }
