@@ -36,6 +36,8 @@ public class Question implements Serializable {
 
   private Boolean disabled;
 
+  private Boolean required;
+
   private List<String> className;
 
   private Object value;
@@ -100,6 +102,14 @@ public class Question implements Serializable {
 
   public void setDisabled(Boolean disabled) {
     this.disabled = disabled;
+  }
+
+  public Boolean getRequired() {
+    return required;
+  }
+
+  public void setRequired(Boolean required) {
+    this.required = required;
   }
 
   public List<String> getClassName() {
@@ -176,6 +186,7 @@ public class Question implements Serializable {
       .append("id", id)
       .append("type", type)
       .append("disabled", disabled)
+      .append("required", required)
       .append("label", label)
       .append("description", description)
       .append("className", className)
