@@ -192,10 +192,12 @@ public class Question implements Serializable {
       .append("className", className)
       .append("value", value)
       .append("items", items)
+      .append("availableItems", availableItems)
       .append("activeItem", activeItem)
       .append("allowedActions", allowedActions)
       .append("valueSetId", valueSetId)
       .append("answered", answered)
+      .append("props", props)
       .build();
   }
 }
