@@ -46,7 +46,42 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
+        <version>2.20</version>
+      </plugin>
+      <plugin>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+        <version>2.1.0</version>
+        <executions>
+          <execution>
+            <id>generate-assertions</id>
+            <goals>
+              <goal>generate-assertions</goal>
+            </goals>
+            <phase>generate-test-sources</phase>
+            <configuration>
+              <packages>
+                <param>io.dialob.api.model</param>
+              </packages>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>build-test-jar</id>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+            <configuration>
+              <classifier>test</classifier>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -57,6 +92,7 @@
             <id>attach-sources</id>
             <goals>
               <goal>jar</goal>
+              <goal>test-jar</goal>
             </goals>
           </execution>
         </executions>
@@ -104,7 +140,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.3.0</version>
+      <version>3.8.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
