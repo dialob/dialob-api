@@ -17,8 +17,6 @@ package io.dialob.api.model;
 
 import com.fasterxml.jackson.annotation.*;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.annotation.Reference;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -35,7 +33,7 @@ public class Questionnaire extends Document {
   private List<Table> tables = new ArrayList<Table>();
 
   @JsonProperty("context")
-  private List<ContextValue> contextValues = new ArrayList<ContextValue>();
+  private List<ContextValue> context = new ArrayList<ContextValue>();
 
   @JsonProperty("activeItem")
   private String activeItem;
@@ -300,11 +298,11 @@ public class Questionnaire extends Document {
   }
 
   public List<ContextValue> getContextValues() {
-    return contextValues;
+    return context;
   }
 
   public void setContextValues(List<ContextValue> contextValues) {
-    this.contextValues = contextValues;
+    this.context = contextValues;
   }
 
   public String getActiveItem() {
