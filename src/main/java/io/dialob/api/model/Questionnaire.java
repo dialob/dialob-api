@@ -297,10 +297,12 @@ public class Questionnaire extends Document {
     this.tables = tables;
   }
 
+  @JsonIgnore
   public List<ContextValue> getContextValues() {
     return context;
   }
 
+  @JsonIgnore
   public void setContextValues(List<ContextValue> contextValues) {
     this.context = contextValues;
   }
