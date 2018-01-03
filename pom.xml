@@ -9,7 +9,7 @@
   <scm>
     <connection>scm:git:git@github.com:dialob/dialob-api.git</connection>
     <url>https://github.com/dialob/dialob-api</url>
-    <tag>HEAD</tag>
+    <tag>1.x</tag>
   </scm>
 
   <distributionManagement>
