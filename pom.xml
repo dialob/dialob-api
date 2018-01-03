@@ -7,7 +7,7 @@
   <packaging>jar</packaging>
 
   <scm>
-    <connection>scm:git:ssh://git@github.com:dialob/dialob-api.git</connection>
+    <connection>scm:git:ssh://git@github.com/dialob/dialob-api.git</connection>
     <url>https://github.com/dialob/dialob-api</url>
     <tag>1.x</tag>
   </scm>
