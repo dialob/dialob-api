@@ -71,16 +71,7 @@ public class Action implements Serializable {
 
   private String questionId;
 
-  private String questionnaireId;
-
   private String page;
-
-  @JsonIgnore
-  private Boolean serverEvent;
-
-  private String resourceId;
-
-  private String formId;
 
   private String valueSetId;
 
@@ -88,30 +79,12 @@ public class Action implements Serializable {
 
   private Object value;
 
-  private ValueSet valueSet;
-
-  public void setValueSet(ValueSet valueSet) {
-    this.valueSet = valueSet;
-  }
-
-  public ValueSet getValueSet() {
-    return valueSet;
-  }
-
   public void setValueSetId(String valueSetId) {
     this.valueSetId = valueSetId;
   }
 
   public String getValueSetId() {
     return valueSetId;
-  }
-
-  public String getFormId() {
-    return formId;
-  }
-
-  public void setFormId(String formId) {
-    this.formId = formId;
   }
 
   public void setType(Type type) {
@@ -170,32 +143,6 @@ public class Action implements Serializable {
     return answer;
   }
 
-  @JsonIgnore
-  public Boolean getServerEvent() {
-    return serverEvent;
-  }
-
-  @JsonIgnore
-  public void setServerEvent(Boolean serverEvent) {
-    this.serverEvent = serverEvent;
-  }
-
-  public String getQuestionnaireId() {
-    return questionnaireId;
-  }
-
-  public void setQuestionnaireId(String questionnaireId) {
-    this.questionnaireId = questionnaireId;
-  }
-
-  public String getResourceId() {
-    return resourceId;
-  }
-
-  public void setResourceId(String resourceId) {
-    this.resourceId = resourceId;
-  }
-
   public void setMessage(String message) {
     this.message = message;
   }
@@ -236,10 +183,6 @@ public class Action implements Serializable {
       .append("question", question)
       .append("answer", answer)
       .append("id", id)
-      .append("serverEvent", serverEvent)
-      .append("questionnaireId", questionnaireId)
-      .append("resourceId", resourceId)
-      .append("valueSet", valueSet)
       .append("valueSetId", valueSetId)
       .append("value", value)
       .append("error", error)
@@ -262,11 +205,7 @@ public class Action implements Serializable {
       .append(answer, other.answer)
       .append(questionId, other.questionId)
       .append(question, other.question)
-      .append(serverEvent, other.serverEvent)
-      .append(questionnaireId, other.questionnaireId)
-      .append(resourceId, other.resourceId)
       .append(page, other.page)
-      .append(valueSet, other.valueSet)
       .append(valueSetId, other.valueSetId)
       .append(value, other.value)
       .append(error, other.error)
@@ -282,11 +221,7 @@ public class Action implements Serializable {
       .append(answer)
       .append(questionId)
       .append(question)
-      .append(serverEvent)
-      .append(questionnaireId)
-      .append(resourceId)
       .append(page)
-      .append(valueSet)
       .append(valueSetId)
       .append(value)
       .append(error)
