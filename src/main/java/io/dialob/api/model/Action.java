@@ -71,6 +71,8 @@ public class Action implements Serializable {
 
   private String questionId;
 
+  private String questionnaireId;
+
   private String page;
 
   private String valueSetId;
@@ -78,6 +80,16 @@ public class Action implements Serializable {
   private List<String> ids;
 
   private Object value;
+
+  private ValueSet valueSet;
+
+  public void setValueSet(ValueSet valueSet) {
+    this.valueSet = valueSet;
+  }
+
+  public ValueSet getValueSet() {
+    return valueSet;
+  }
 
   public void setValueSetId(String valueSetId) {
     this.valueSetId = valueSetId;
@@ -143,6 +155,14 @@ public class Action implements Serializable {
     return answer;
   }
 
+  public String getQuestionnaireId() {
+    return questionnaireId;
+  }
+
+  public void setQuestionnaireId(String questionnaireId) {
+    this.questionnaireId = questionnaireId;
+  }
+
   public void setMessage(String message) {
     this.message = message;
   }
@@ -183,6 +203,8 @@ public class Action implements Serializable {
       .append("question", question)
       .append("answer", answer)
       .append("id", id)
+      .append("questionnaireId", questionnaireId)
+      .append("valueSet", valueSet)
       .append("valueSetId", valueSetId)
       .append("value", value)
       .append("error", error)
@@ -205,7 +227,9 @@ public class Action implements Serializable {
       .append(answer, other.answer)
       .append(questionId, other.questionId)
       .append(question, other.question)
+      .append(questionnaireId, other.questionnaireId)
       .append(page, other.page)
+      .append(valueSet, other.valueSet)
       .append(valueSetId, other.valueSetId)
       .append(value, other.value)
       .append(error, other.error)
@@ -221,7 +245,9 @@ public class Action implements Serializable {
       .append(answer)
       .append(questionId)
       .append(question)
+      .append(questionnaireId)
       .append(page)
+      .append(valueSet)
       .append(valueSetId)
       .append(value)
       .append(error)
