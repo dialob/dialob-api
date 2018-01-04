@@ -1,11 +1,12 @@
 package io.dialob.api.proto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.dialob.api.model.Error;
-import io.dialob.api.model.Question;
-import io.dialob.api.model.ValueSet;
+import io.dialob.api.questionnaire.model.Error;
+import io.dialob.api.questionnaire.model.Question;
+import io.dialob.api.questionnaire.model.ValueSet;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
@@ -17,9 +18,38 @@ import java.util.List;
 @JsonSerialize(as = ImmutableAction.class)
 @JsonDeserialize(as = ImmutableAction.class)
 @Gson.TypeAdapters
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public interface Action extends Serializable {
 
-  io.dialob.api.model.Action.Type getType();
+  public enum Type {
+    ANSWER(true),
+    NEXT(true),
+    PREVIOUS(true),
+    GOTO(true),
+    COMPLETE(true),
+    ADD_ROW(true),
+    DELETE_ROW(true),
+    RESET(false),
+    QUESTION(false),
+    REMOVE_QUESTIONS(false),
+    ERROR(false),
+    REMOVE_ERROR(false),
+    VALUE_SET(false),
+    REMOVE_VALUE_SETS(false),
+    NOT_FOUND(false),
+    SERVER_ERROR(false),
+    ROWS(false),
+    SET_VALUE(false),
+    SET_FAILED(false);
+
+    final boolean clientAction;
+
+    Type(boolean clientAction) {
+      this.clientAction = clientAction;
+    }
+  }
+
+  Type getType();
 
   @Nullable
   String getId();
@@ -40,28 +70,6 @@ public interface Action extends Serializable {
   Object getAnswer();
 
   @Nullable
-  String getQuestionId();
-
-  @Nullable
-  String getQuestionnaireId();
-
-  @Nullable
-  String getPage();
-
-  @JsonIgnore
-  @Nullable
-  Boolean getServerEvent();
-
-  @Nullable
-  String getResourceId();
-
-  @Nullable
-  String getFormId();
-
-  @Nullable
-  String getValueSetId();
-
-  @Nullable
   List<String> getIds();
 
   @Nullable
@@ -69,5 +77,13 @@ public interface Action extends Serializable {
 
   @Nullable
   ValueSet getValueSet();
+
+  @JsonIgnore
+  @Nullable
+  Boolean getServerEvent();
+
+  @JsonIgnore
+  @Nullable
+  String getResourceId();
 
 }

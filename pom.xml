@@ -63,8 +63,12 @@
             <phase>generate-test-sources</phase>
             <configuration>
               <packages>
-                <param>io.dialob.api.model</param>
+                <package>io.dialob.api</package>
               </packages>
+              <excludes>
+                <exclude>io.dialob.api.proto.Immutable.*</exclude>
+                <exclude>io.dialob.api.questionnaire.model.Immutable.*</exclude>
+              </excludes>
             </configuration>
           </execution>
         </executions>

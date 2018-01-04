@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.proto;
+package io.dialob.api.questionnaire.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -30,6 +30,7 @@ import java.io.Serializable;
 @JsonSerialize(as = ImmutableError.class)
 @JsonDeserialize(as = ImmutableError.class)
 @Gson.TypeAdapters
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public interface Error extends Serializable {
 
   String getId();

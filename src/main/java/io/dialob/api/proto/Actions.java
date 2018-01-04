@@ -1,5 +1,6 @@
 package io.dialob.api.proto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.dialob.api.model.Action;
@@ -14,11 +15,10 @@ import java.util.List;
 @JsonSerialize(as = ImmutableActions.class)
 @JsonDeserialize(as = ImmutableActions.class)
 @Gson.TypeAdapters
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public interface Actions extends Serializable {
 
-  @Nullable String getPrevRev();
-
-  @Nullable String getNextRev();
+  @Nullable String getRev();
 
   @Nullable List<Action> actions();
 
