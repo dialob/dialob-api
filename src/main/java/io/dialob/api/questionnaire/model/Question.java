@@ -18,8 +18,8 @@ package io.dialob.api.questionnaire.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.dialob.api.model.Action;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import io.dialob.api.annotation.AllowNulls;
+import io.dialob.api.proto.Action;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
@@ -33,7 +33,7 @@ import java.util.Set;
 @JsonSerialize(as = ImmutableQuestion.class)
 @JsonDeserialize(as = ImmutableQuestion.class)
 @Gson.TypeAdapters
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public interface Question extends Serializable {
 
   String getId();
@@ -64,6 +64,7 @@ public interface Question extends Serializable {
 
   @Nullable String getValueSetId();
 
-  @Nullable Map<String, Object> getProps();
+  @Nullable @AllowNulls
+  Map<String, Object> getProps();
 
 }

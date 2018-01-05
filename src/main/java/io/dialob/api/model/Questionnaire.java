@@ -16,6 +16,7 @@
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.annotation.*;
+import io.dialob.api.questionnaire.model.Error;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.validation.Valid;

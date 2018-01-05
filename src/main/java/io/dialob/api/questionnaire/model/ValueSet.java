@@ -31,7 +31,7 @@ import java.util.List;
 @JsonSerialize(as = ImmutableValueSet.class)
 @JsonDeserialize(as = ImmutableValueSet.class)
 @Gson.TypeAdapters
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public interface ValueSet extends Serializable {
 
   String getId();

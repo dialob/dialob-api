@@ -24,6 +24,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
+import javax.annotation.Nullable;
 import java.io.Serializable;
 
 @Value.Immutable
@@ -35,8 +36,8 @@ public interface Error extends Serializable {
 
   String getId();
 
-  String getDescription();
+  @Nullable String getCode();
 
-  String getCode();
+  @Nullable String getDescription();
 
 }
