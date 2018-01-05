@@ -16,12 +16,11 @@
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.dialob.api.questionnaire.model.ImmutableQuestion;
-import io.dialob.api.questionnaire.model.Question;
+import io.dialob.api.proto.ImmutableQuestion;
+import io.dialob.api.proto.Question;
 import org.junit.Test;
 
 import java.util.Collections;
-import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 

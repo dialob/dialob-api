@@ -13,58 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.questionnaire.model;
+package io.dialob.api.proto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.dialob.api.annotation.AllowNulls;
-import io.dialob.api.proto.Action;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
 import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @Value.Immutable
-@JsonSerialize(as = ImmutableQuestion.class)
-@JsonDeserialize(as = ImmutableQuestion.class)
+@JsonSerialize(as = ImmutableValueSet.class)
+@JsonDeserialize(as = ImmutableValueSet.class)
 @Gson.TypeAdapters
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
-public interface Question extends Serializable {
+public interface ValueSet extends Serializable {
 
   String getId();
 
-  String getType();
+  @Nullable List<Entry> getEntries();
 
-  @Nullable String getLabel();
+  @Value.Immutable
+  @JsonSerialize(as = ImmutableEntry.class)
+  @JsonDeserialize(as = ImmutableEntry.class)
+  @Gson.TypeAdapters
+  @JsonInclude(JsonInclude.Include.NON_NULL)
+  interface Entry extends Serializable {
 
-  @Nullable String getDescription();
+    String getKey();
 
-  @Nullable Boolean getDisabled();
+    @Nullable String getValue();
 
-  @Nullable Boolean getRequired();
-
-  @Nullable List<String> getClassName();
-
-  @Nullable Object getValue();
-
-  @Nullable List<String> getItems();
-
-  @Nullable String getActiveItem();
-
-  @Nullable List<String> getAvailableItems();
-
-  @Nullable Set<Action.Type> getAllowedActions();
-
-  @Nullable Boolean getAnswered();
-
-  @Nullable String getValueSetId();
-
-  @Nullable @AllowNulls
-  Map<String, Object> getProps();
+  }
 
 }

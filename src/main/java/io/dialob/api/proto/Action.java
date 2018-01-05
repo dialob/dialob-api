@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.dialob.api.questionnaire.model.Error;
-import io.dialob.api.questionnaire.model.Question;
-import io.dialob.api.questionnaire.model.ValueSet;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 

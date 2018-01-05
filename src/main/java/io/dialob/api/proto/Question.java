@@ -13,42 +13,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.questionnaire.model;
+package io.dialob.api.proto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.dialob.api.proto.ImmutableAction;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import io.dialob.api.annotation.AllowNulls;
+import io.dialob.api.proto.Action;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
 import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Value.Immutable
-@JsonSerialize(as = ImmutableValueSet.class)
-@JsonDeserialize(as = ImmutableValueSet.class)
+@JsonSerialize(as = ImmutableQuestion.class)
+@JsonDeserialize(as = ImmutableQuestion.class)
 @Gson.TypeAdapters
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
-public interface ValueSet extends Serializable {
+public interface Question extends Serializable {
 
   String getId();
 
-  @Nullable List<Entry> getEntries();
+  String getType();
 
-  @Value.Immutable
-  @JsonSerialize(as = ImmutableEntry.class)
-  @JsonDeserialize(as = ImmutableEntry.class)
-  @Gson.TypeAdapters
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  interface Entry extends Serializable {
+  @Nullable String getLabel();
 
-    String getKey();
+  @Nullable String getDescription();
 
-    @Nullable String getValue();
+  @Nullable Boolean getDisabled();
 
-  }
+  @Nullable Boolean getRequired();
+
+  @Nullable List<String> getClassName();
+
+  @Nullable Object getValue();
+
+  @Nullable List<String> getItems();
+
+  @Nullable String getActiveItem();
+
+  @Nullable List<String> getAvailableItems();
+
+  @Nullable Set<Action.Type> getAllowedActions();
+
+  @Nullable Boolean getAnswered();
+
+  @Nullable String getValueSetId();
+
+  @Nullable @AllowNulls
+  Map<String, Object> getProps();
 
 }
