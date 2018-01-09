@@ -19,12 +19,10 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.dialob.api.annotation.AllowNulls;
-import io.dialob.api.proto.ImmutableActions;
 import io.dialob.api.questionnaire.model.Error;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
@@ -32,7 +30,10 @@ import javax.annotation.Nullable;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -75,25 +76,25 @@ public class Questionnaire implements Serializable {
     this._rev = _rev;
   }
 
-  @JsonProperty("answers")
+  @JsonProperty
   private List<Answer> answers = new ArrayList<Answer>();
 
-  @JsonProperty("tables")
+  @JsonProperty
   private List<Table> tables = new ArrayList<Table>();
 
-  @JsonProperty("context")
+  @JsonProperty
   private List<ContextValue> context = new ArrayList<ContextValue>();
 
-  @JsonProperty("activeItem")
+  @JsonProperty
   private String activeItem;
 
-  @JsonProperty("errors")
+  @JsonProperty
   private List<Error> errors;
 
-  @JsonProperty("variableValues")
+  @JsonProperty
   private List<VariableValue> variableValues;
 
-  @JsonProperty("metadata")
+  @JsonProperty
   @Valid
   @NotNull
   private Metadata metadata;
@@ -225,7 +226,6 @@ public class Questionnaire implements Serializable {
     this.metadata = metadata;
   }
 
-
   @Override
   public boolean equals(Object obj) {
     if (obj == null) {
@@ -248,19 +248,4 @@ public class Questionnaire implements Serializable {
     }
     return false;
   }
-
-  /*
-  private String _id;
-  private String _rev;
-  private List<Answer> answers = new ArrayList<Answer>();
-  private List<Table> tables = new ArrayList<Table>();
-  private List<ContextValue> context = new ArrayList<ContextValue>();
-  private String activeItem;
-  private List<Error> errors;
-  private List<VariableValue> variableValues;
-  private Metadata metadata;
-
-
-   */
-
 }

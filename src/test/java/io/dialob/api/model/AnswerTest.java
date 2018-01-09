@@ -28,16 +28,20 @@ public class AnswerTest {
   @Test
   public void shouldParseAnswer() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
-    Answer answer = objectMapper.readValue("{}", Answer.class);
+    Answer answer = objectMapper.readValue("{\"id\":\"q1\"}", Answer.class);
     assertNull(answer.getValue());
+    assertEquals("q1", answer.getId());
 
-    answer = objectMapper.readValue("{\"value\":\"123\"}", Answer.class);
+    answer = objectMapper.readValue("{\"id\":\"q1\",\"value\":\"123\"}", Answer.class);
     assertEquals("123",answer.getValue());
+    assertEquals("q1", answer.getId());
 
-    answer = objectMapper.readValue("{\"value\":[\"123\"]}", Answer.class);
+    answer = objectMapper.readValue("{\"id\":\"q1\",\"value\":[\"123\"]}", Answer.class);
     assertEquals(Arrays.asList("123"),answer.getValue());
+    assertEquals("q1", answer.getId());
 
-    answer = objectMapper.readValue("{\"value\":123}", Answer.class);
+    answer = objectMapper.readValue("{\"id\":\"q1\",\"value\":123}", Answer.class);
     assertEquals(123,answer.getValue());
+    assertEquals("q1", answer.getId());
   }
 }

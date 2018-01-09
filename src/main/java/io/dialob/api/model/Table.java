@@ -16,49 +16,25 @@
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.immutables.gson.Gson;
+import org.immutables.value.Value;
 
 import java.io.Serializable;
 import java.util.List;
 
 import static org.apache.commons.lang3.StringUtils.join;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Table implements Serializable {
+@Value.Immutable
+@JsonSerialize(as = ImmutableTable.class)
+@JsonDeserialize(as = ImmutableTable.class)
+@Gson.TypeAdapters
+@JsonInclude(JsonInclude.Include.NON_NULL)public interface Table extends Serializable {
 
-  private String tableId;
+  String getTableId();
 
-  private List<String> rows;
+  List<String> getRows();
 
-  public Table withTableId(String tableId) {
-    this.tableId = tableId;
-    return this;
-  }
-
-  public Table withRows(List<String> rows) {
-    this.rows = rows;
-    return this;
-  }
-
-  public void setTableId(String tableId) {
-    this.tableId = tableId;
-  }
-
-  public String getTableId() {
-    return tableId;
-  }
-
-  public void setRows(List<String> rows) {
-    this.rows = rows;
-  }
-
-  public List<String> getRows() {
-    return rows;
-  }
-
-  @Override
-  public String toString() {
-    return "{\"tableId\":\"" + tableId + "\"" +
-      (rows != null && !rows.isEmpty() ? ",\"rows\":[\"" + join(rows, "\",\"") + "\"]" : "") +
-      "}";
-  }
 }

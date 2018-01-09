@@ -15,66 +15,25 @@
  */
 package io.dialob.api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.apache.commons.lang3.builder.EqualsBuilder;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.immutables.gson.Gson;
+import org.immutables.value.Value;
 
+import javax.annotation.Nullable;
 import java.io.Serializable;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class ContextValue implements Serializable {
-  private String id;
+@Value.Immutable
+@JsonSerialize(as = ImmutableContextValue.class)
+@JsonDeserialize(as = ImmutableContextValue.class)
+@Gson.TypeAdapters
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public interface ContextValue extends Serializable {
 
-  private String value;
+  String getId();
 
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getValue() {
-    return value;
-  }
-
-  public void setValue(String value) {
-    this.value = value;
-  }
-
-  public ContextValue withId(String id) {
-    this.id = id;
-    return this;
-  }
-
-  public ContextValue withValue(String value) {
-    this.value = value;
-    return this;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null || !(obj instanceof ContextValue)) {
-      return false;
-    }
-    if (this == obj) {
-      return true;
-    }
-    ContextValue other = (ContextValue) obj;
-    return new EqualsBuilder()
-      .append(id, other.getId())
-      .append(value, other.getValue())
-      .isEquals();
-  }
-
-  @Override
-  public int hashCode() {
-    return (id != null ? id.hashCode() : 0) * 31 + (value != null ? value.hashCode() : 0);
-  }
-
-  @Override
-  public String toString() {
-    return "{\"id\":\"" + id + "\",\"value\":\"" + value + "\"}";
-  }
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  @Nullable Object getValue();
 
 }
