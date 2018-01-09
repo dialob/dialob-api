@@ -16,16 +16,64 @@
 package io.dialob.api.model;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.dialob.api.annotation.AllowNulls;
+import io.dialob.api.proto.ImmutableActions;
 import io.dialob.api.questionnaire.model.Error;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.immutables.gson.Gson;
+import org.immutables.value.Value;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 
+import javax.annotation.Nullable;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Questionnaire extends Document {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Questionnaire implements Serializable {
+  @JsonProperty("_id")
+  @Id
+  private String _id;
+
+  @JsonProperty("_rev")
+  @Version
+  private String _rev;
+
+  public Questionnaire withId(String id) {
+    this._id = id;
+    return this;
+  }
+
+  public Questionnaire withRev(String rev) {
+    this._rev = rev;
+    return this;
+  }
+
+  @JsonIgnore
+  public String getId() {
+    return _id;
+  }
+
+  @JsonIgnore
+  public void setId(String _id) {
+    this._id = _id;
+  }
+
+  @JsonIgnore
+  public String getRev() {
+    return _rev;
+  }
+
+  @JsonIgnore
+  public void setRev(String _rev) {
+    this._rev = _rev;
+  }
 
   @JsonProperty("answers")
   private List<Answer> answers = new ArrayList<Answer>();
@@ -50,8 +98,12 @@ public class Questionnaire extends Document {
   @NotNull
   private Metadata metadata;
 
+  @Value.Immutable
+  @JsonSerialize(as = ImmutableMetadata.class)
+  @JsonDeserialize(as = ImmutableMetadata.class)
+  @Gson.TypeAdapters
   @JsonInclude(JsonInclude.Include.NON_NULL)
-  public static class Metadata implements Serializable {
+  public interface Metadata extends Serializable {
 
     public enum Status {
       NEW,
@@ -64,222 +116,55 @@ public class Questionnaire extends Document {
       CANCELLED
     }
 
-    @JsonProperty("formId")
-    @NotNull
-    private String formId;
+    String getFormId();
 
-    @JsonProperty("formRev")
-    private String formRev;
+    @Nullable
+    String getFormRev();
 
-    @JsonProperty("tenantId")
-    private String tenantId;
+    @Nullable
+    String getTenantId();
 
-    @JsonProperty("created")
-    @CreatedDate
-    private Date created;
+    @Nullable
+    Date getCreated();
 
-    @JsonProperty("lastAnswer")
-    private Date lastAnswer;
+    @Nullable
+    Date getLastAnswer();
 
-    @JsonProperty("label")
-    private String label;
+    @Nullable
+    String getLabel();
 
-    @JsonProperty("submitUrl")
-    private String submitUrl;
+    @Nullable
+    String getSubmitUrl();
 
-    @JsonProperty("status")
-    private Status status;
+    @Nullable
+    Status getStatus();
 
     /**
      * Completion reason, null if normally completed.
      */
-    @JsonProperty("reason")
-    private Reason reason;
+    @Nullable
+    Reason getReason();
 
-    @JsonProperty("language")
-    private String language;
+    @Nullable
+    String getLanguage();
 
     /**
      * userId of document owner
      */
-    @JsonProperty("owner")
-    private String owner;
+    @Nullable
+    String getOwner();
 
     /**
      * userId of one who created questionnaire
      */
-    @JsonProperty("creator")
-    private String creator;
+    @Nullable
+    String getCreator();
 
     @JsonInclude
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    public Metadata withFormId(String formId) {
-      this.formId = formId;
-      return this;
-    }
-
-    public Metadata withFormRev(String formRev) {
-      this.formRev = formRev;
-      return this;
-    }
-
-    public Metadata withCreated(Date created) {
-      this.created = created;
-      return this;
-    }
-
-    public Metadata withTenantId(String tenantId) {
-      this.tenantId = tenantId;
-      return this;
-    }
-
-    public Metadata withLastAnswer(Date lastAnswer) {
-      this.lastAnswer = lastAnswer;
-      return this;
-    }
-
-    public Metadata withLabel(String label) {
-      this.label = label;
-      return this;
-    }
-
-    public Metadata withSubmitUrl(String submitUrl) {
-      this.submitUrl = submitUrl;
-      return this;
-    }
-
-    public Metadata withStatus(Status status) {
-      this.status = status;
-      return this;
-    }
-
-    public Metadata withReason(Reason reason) {
-      this.reason = reason;
-      return this;
-    }
-
-    public Metadata withLanguage(String language) {
-      this.language = language;
-      return this;
-    }
-
-    public Metadata withOwner(String owner) {
-      this.owner = owner;
-      return this;
-    }
-
-    public Metadata withCreator(String creator) {
-      this.creator = creator;
-      return this;
-    }
-
-
-    public String getFormRev() {
-      return formRev;
-    }
-
-    public void setFormRev(String formRev) {
-      this.formRev = formRev;
-    }
-
-    public String getFormId() {
-      return formId;
-    }
-
-    public void setFormId(String formId) {
-      this.formId = formId;
-    }
-
-    public void setCreated(Date created) {
-      this.created = created;
-    }
-
-    public Date getCreated() {
-      return created;
-    }
-
-    public String getTenantId() {
-      return tenantId;
-    }
-
-    public void setTenantId(String tenantId) {
-      this.tenantId = tenantId;
-    }
-
-    public Date getLastAnswer() {
-      return lastAnswer;
-    }
-
-    public void setLastAnswer(Date lastAnswer) {
-      this.lastAnswer = lastAnswer;
-    }
-
-    public String getLabel() {
-      return label;
-    }
-
-    public void setLabel(String label) {
-      this.label = label;
-    }
-
-    public String getSubmitUrl() {
-      return submitUrl;
-    }
-
-    public void setSubmitUrl(String submitUrl) {
-      this.submitUrl = submitUrl;
-    }
-
-    public Status getStatus() {
-      return status;
-    }
-
-    public void setStatus(Status status) {
-      this.status = status;
-    }
-
-    public Reason getReason() {
-      return reason;
-    }
-
-    public void setReason(Reason reason) {
-      this.reason = reason;
-    }
-
-    public String getLanguage() {
-      return language;
-    }
-
-    public void setLanguage(String language) {
-      this.language = language;
-    }
-
-    public String getOwner() {
-      return owner;
-    }
-
-    public void setOwner(String owner) {
-      this.owner = owner;
-    }
-
-    public String getCreator() {
-      return creator;
-    }
-
-    public void setCreator(String creator) {
-      this.creator = creator;
-    }
-
     @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-      return additionalProperties;
-    }
+    @AllowNulls
+    Map<String, Object> getAdditionalProperties();
 
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, String value) {
-      additionalProperties.put(name, value);
-    }
   }
 
   public List<Answer> getAnswers() {
@@ -340,5 +225,42 @@ public class Questionnaire extends Document {
     this.metadata = metadata;
   }
 
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    if (obj instanceof Questionnaire) {
+      Questionnaire other = (Questionnaire) obj;
+      return new EqualsBuilder()
+        .append(this._id, other._id)
+        .append(this._rev, other._rev)
+        .append(this.answers, other.answers)
+        .append(this.tables, other.tables)
+        .append(this.context, other.context)
+        .append(this.activeItem, other.activeItem)
+        .append(this.errors, other.errors)
+        .append(this.variableValues, other.variableValues)
+        .append(this.metadata, other.metadata)
+        .append(this.metadata, other.metadata)
+        .build();
+    }
+    return false;
+  }
+
+  /*
+  private String _id;
+  private String _rev;
+  private List<Answer> answers = new ArrayList<Answer>();
+  private List<Table> tables = new ArrayList<Table>();
+  private List<ContextValue> context = new ArrayList<ContextValue>();
+  private String activeItem;
+  private List<Error> errors;
+  private List<VariableValue> variableValues;
+  private Metadata metadata;
+
+
+   */
 
 }
