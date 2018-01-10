@@ -15,7 +15,6 @@
  */
 package io.dialob.api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -24,8 +23,6 @@ import org.immutables.value.Value;
 
 import java.io.Serializable;
 import java.util.List;
-
-import static org.apache.commons.lang3.StringUtils.join;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutableTable.class)

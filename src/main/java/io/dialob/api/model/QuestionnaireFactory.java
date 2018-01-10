@@ -20,11 +20,9 @@ public final class QuestionnaireFactory {
     return ImmutableTable.builder().tableId(tableId).rows(rows).build();
   }
 
-  public Questionnaire questionnaire(String id, String formId) {
-    Questionnaire questionnaire
-       = new Questionnaire().withId(id);
-    questionnaire.setMetadata(ImmutableMetadata.builder().formId(formId).build());
-    return questionnaire;
+  public static Questionnaire questionnaire(String id, String formId) {
+    return ImmutableQuestionnaire.builder().id(id)
+          .metadata(ImmutableMetadata.builder().formId(formId).build()).build();
   }
 
 }

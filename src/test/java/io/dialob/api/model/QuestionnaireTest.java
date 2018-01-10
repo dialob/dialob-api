@@ -11,10 +11,12 @@ public class QuestionnaireTest {
 
   @Test
   public void gsonShouldSerializeCompatibleJson() {
-    Questionnaire questionnaire = new Questionnaire();
-    Gson gson = new GsonBuilder().create();
+    Questionnaire questionnaire = QuestionnaireFactory.questionnaire("12","123");
+    Gson gson = new GsonBuilder()
+      .registerTypeAdapterFactory(new GsonAdaptersQuestionnaire())
+      .create();
     String json = gson.toJson(questionnaire);
-    Assert.assertEquals("{\"answers\":[],\"tables\":[],\"context\":[]}", json);
+    Assert.assertEquals("{\"_id\":\"12\",\"metadata\":{\"formId\":\"123\"}}", json);
   }
 
 }

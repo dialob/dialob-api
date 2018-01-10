@@ -15,12 +15,13 @@
  */
 package io.dialob.api.model;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.dialob.api.annotation.AllowNulls;
 import io.dialob.api.questionnaire.model.Error;
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 import org.springframework.data.annotation.Id;
@@ -30,89 +31,65 @@ import javax.annotation.Nullable;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Questionnaire implements Serializable {
+@Value.Immutable
+@JsonSerialize(as = ImmutableQuestionnaire.class)
+@JsonDeserialize(as = ImmutableQuestionnaire.class)
+@Gson.TypeAdapters
+@JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
+public interface Questionnaire extends Serializable {
+
   @JsonProperty("_id")
+  @Gson.Named("_id")
   @Id
-  private String _id;
+  @Nullable
+  String getId();
 
   @JsonProperty("_rev")
+  @Gson.Named("_rev")
   @Version
-  private String _rev;
+  @Nullable
+  String getRev();
 
-  public Questionnaire withId(String id) {
-    this._id = id;
-    return this;
-  }
+  @Nullable
+  List<Answer> getAnswers();
 
-  public Questionnaire withRev(String rev) {
-    this._rev = rev;
-    return this;
-  }
+  @Nullable
+  List<Table> getTables();
 
-  @JsonIgnore
-  public String getId() {
-    return _id;
-  }
+  @Nullable
+  List<ContextValue> getContext();
 
-  @JsonIgnore
-  public void setId(String _id) {
-    this._id = _id;
-  }
+  @Nullable
+  String getActiveItem();
 
-  @JsonIgnore
-  public String getRev() {
-    return _rev;
-  }
+  @Nullable
+  List<Error> getErrors();
 
-  @JsonIgnore
-  public void setRev(String _rev) {
-    this._rev = _rev;
-  }
+  @Nullable
+  List<VariableValue> getVariableValues();
 
-  @JsonProperty
-  private List<Answer> answers = new ArrayList<Answer>();
-
-  @JsonProperty
-  private List<Table> tables = new ArrayList<Table>();
-
-  @JsonProperty
-  private List<ContextValue> context = new ArrayList<ContextValue>();
-
-  @JsonProperty
-  private String activeItem;
-
-  @JsonProperty
-  private List<Error> errors;
-
-  @JsonProperty
-  private List<VariableValue> variableValues;
-
-  @JsonProperty
   @Valid
   @NotNull
-  private Metadata metadata;
+  Metadata getMetadata();
 
   @Value.Immutable
   @JsonSerialize(as = ImmutableMetadata.class)
   @JsonDeserialize(as = ImmutableMetadata.class)
   @Gson.TypeAdapters
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  public interface Metadata extends Serializable {
+  @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
+  interface Metadata extends Serializable {
 
-    public enum Status {
+    enum Status {
       NEW,
       OPEN,
       COMPLETED
     }
 
-    public enum Reason {
+    enum Reason {
       SKIPPED,
       CANCELLED
     }
@@ -164,88 +141,7 @@ public class Questionnaire implements Serializable {
     @JsonInclude
     @JsonAnyGetter
     @AllowNulls
+    @Gson.Ignore
     Map<String, Object> getAdditionalProperties();
-
-  }
-
-  public List<Answer> getAnswers() {
-    return answers;
-  }
-
-  public void setAnswers(List<Answer> answers) {
-    this.answers = answers;
-  }
-
-  public List<Table> getTables() {
-    return tables;
-  }
-
-  public void setTables(List<Table> tables) {
-    this.tables = tables;
-  }
-
-  @JsonIgnore
-  public List<ContextValue> getContextValues() {
-    return context;
-  }
-
-  @JsonIgnore
-  public void setContextValues(List<ContextValue> contextValues) {
-    this.context = contextValues;
-  }
-
-  public String getActiveItem() {
-    return activeItem;
-  }
-
-  public void setActiveItem(String activeItem) {
-    this.activeItem = activeItem;
-  }
-
-  public List<Error> getErrors() {
-    return errors;
-  }
-
-  public void setErrors(List<Error> errors) {
-    this.errors = errors;
-  }
-
-  public List<VariableValue> getVariableValues() {
-    return variableValues;
-  }
-
-  public void setVariableValues(List<VariableValue> variableValues) {
-    this.variableValues = variableValues;
-  }
-
-  public Metadata getMetadata() {
-    return metadata;
-  }
-
-  public void setMetadata(Metadata metadata) {
-    this.metadata = metadata;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
-    }
-    if (obj instanceof Questionnaire) {
-      Questionnaire other = (Questionnaire) obj;
-      return new EqualsBuilder()
-        .append(this._id, other._id)
-        .append(this._rev, other._rev)
-        .append(this.answers, other.answers)
-        .append(this.tables, other.tables)
-        .append(this.context, other.context)
-        .append(this.activeItem, other.activeItem)
-        .append(this.errors, other.errors)
-        .append(this.variableValues, other.variableValues)
-        .append(this.metadata, other.metadata)
-        .append(this.metadata, other.metadata)
-        .build();
-    }
-    return false;
   }
 }
