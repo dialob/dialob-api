@@ -24,7 +24,7 @@ public final class ActionsFactory {
   }
 
   public static Action gotoPage(String pageId) {
-    return ImmutableAction.builder().type(Action.Type.COMPLETE).id(pageId).build();
+    return ImmutableAction.builder().type(Action.Type.GOTO).id(pageId).build();
   }
 
   public static Action addRow(String groupId) {
