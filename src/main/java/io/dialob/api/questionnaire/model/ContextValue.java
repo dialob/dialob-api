@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 ReSys OÜ
+ * Copyright 2017 ReSys OÜ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.model;
+package io.dialob.api.questionnaire.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -25,16 +25,15 @@ import javax.annotation.Nullable;
 import java.io.Serializable;
 
 @Value.Immutable
-@JsonSerialize(as = ImmutableVariableValue.class)
-@JsonDeserialize(as = ImmutableVariableValue.class)
+@JsonSerialize(as = ImmutableContextValue.class)
+@JsonDeserialize(as = ImmutableContextValue.class)
 @Gson.TypeAdapters
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public interface VariableValue extends Serializable {
+public interface ContextValue extends Serializable {
 
   String getId();
 
   @JsonInclude(JsonInclude.Include.ALWAYS)
   @Nullable Object getValue();
-
 
 }

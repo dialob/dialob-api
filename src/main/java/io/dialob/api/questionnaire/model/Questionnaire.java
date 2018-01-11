@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.model;
+package io.dialob.api.questionnaire.model;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.dialob.api.annotation.AllowNulls;
-import io.dialob.api.questionnaire.model.Error;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 import org.springframework.data.annotation.Id;

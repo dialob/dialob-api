@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.model;
+package io.dialob.api.questionnaire.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -21,18 +21,24 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
+import javax.annotation.Nullable;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 @Value.Immutable
-@JsonSerialize(as = ImmutableTable.class)
-@JsonDeserialize(as = ImmutableTable.class)
+@JsonSerialize(as = ImmutableAnswer.class)
+@JsonDeserialize(as = ImmutableAnswer.class)
 @Gson.TypeAdapters
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public interface Table extends Serializable {
+public interface Answer extends Serializable {
 
-  String getTableId();
+  String getId();
 
-  List<String> getRows();
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  @Nullable Object getValue();
+
+  @Nullable Date getUpdated();
+
+  @Nullable String getUserId();
 
 }
