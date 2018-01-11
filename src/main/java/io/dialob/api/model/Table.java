@@ -28,7 +28,8 @@ import java.util.List;
 @JsonSerialize(as = ImmutableTable.class)
 @JsonDeserialize(as = ImmutableTable.class)
 @Gson.TypeAdapters
-@JsonInclude(JsonInclude.Include.NON_NULL)public interface Table extends Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public interface Table extends Serializable {
 
   String getTableId();
 

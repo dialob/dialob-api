@@ -81,67 +81,71 @@ public interface Questionnaire extends Serializable {
   @JsonDeserialize(as = ImmutableMetadata.class)
   @Gson.TypeAdapters
   @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
-  interface Metadata extends Serializable {
+  abstract class Metadata implements Serializable {
 
-    enum Status {
+    public enum Status {
       NEW,
       OPEN,
       COMPLETED
     }
 
-    enum Reason {
+    public enum Reason {
       SKIPPED,
       CANCELLED
     }
 
-    String getFormId();
+    @NotNull
+    public abstract String getFormId();
+
+    @NotNull
+    @Value.Default
+    public Status getStatus() {
+      return Status.NEW;
+    }
 
     @Nullable
-    String getFormRev();
+    public abstract String getFormRev();
 
     @Nullable
-    String getTenantId();
+    public abstract String getTenantId();
 
     @Nullable
-    Date getCreated();
+    public abstract Date getCreated();
 
     @Nullable
-    Date getLastAnswer();
+    public abstract Date getLastAnswer();
 
     @Nullable
-    String getLabel();
+    public abstract String getLabel();
 
     @Nullable
-    String getSubmitUrl();
-
-    @Nullable
-    Status getStatus();
+    public abstract String getSubmitUrl();
 
     /**
      * Completion reason, null if normally completed.
      */
     @Nullable
-    Reason getReason();
+    public abstract Reason getReason();
 
     @Nullable
-    String getLanguage();
+    public abstract String getLanguage();
 
     /**
      * userId of document owner
      */
     @Nullable
-    String getOwner();
+    public abstract String getOwner();
 
     /**
      * userId of one who created questionnaire
      */
     @Nullable
-    String getCreator();
+    public abstract String getCreator();
 
     @JsonInclude
     @JsonAnyGetter
     @AllowNulls
     @Gson.Ignore
-    Map<String, Object> getAdditionalProperties();
+    public abstract Map<String, Object> getAdditionalProperties();
   }
 }

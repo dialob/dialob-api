@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 ReSys OÜ
+ * Copyright 2018 ReSys OÜ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,27 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.proto;
+package io.dialob.api.rest;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 
 import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.util.List;
 
 @Value.Immutable
-@JsonSerialize(as = ImmutableActions.class)
-@JsonDeserialize(as = ImmutableActions.class)
+@JsonSerialize(as = ImmutableIdAndRevision.class)
+@JsonDeserialize(as = ImmutableIdAndRevision.class)
 @Gson.TypeAdapters
-@JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
-public interface Actions extends Serializable {
+public interface IdAndRevision extends Serializable {
 
-  @Nullable String getRev();
+  @JsonProperty("_id")
+  @Gson.Named("_id")
+  String getId();
 
-  @Nullable List<Action> getActions();
+  @JsonProperty("_rev")
+  @Gson.Named("_rev")
+  String getRev();
 
 }

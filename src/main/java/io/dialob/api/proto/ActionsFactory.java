@@ -1,3 +1,18 @@
+/*
+ * Copyright 2018 ReSys OÜ
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package io.dialob.api.proto;
 
 public final class ActionsFactory {
@@ -35,8 +50,20 @@ public final class ActionsFactory {
     return ImmutableAction.builder().type(Action.Type.DELETE_ROW).id(rowId).build();
   }
 
-  public static Action rows(String ...ids) {
-    return ImmutableAction.builder().type(Action.Type.ROWS).addIds(ids).build();
+  public static Action rows(String tableId, String ...ids) {
+    return ImmutableAction.builder().type(Action.Type.ROWS).id(tableId).addIds(ids).build();
+  }
+
+  public static Action rows(String tableId, Iterable<String> ids) {
+    return ImmutableAction.builder().type(Action.Type.ROWS).id(tableId).ids(ids).build();
+  }
+
+  public static Action setValue(String variableId, Object value) {
+    return ImmutableAction.builder().type(Action.Type.SET_VALUE).id(variableId).value(value).build();
+  }
+
+  public static Action setFailed(String variableId, Object error) {
+    return ImmutableAction.builder().type(Action.Type.SET_FAILED).id(variableId).value(error).build();
   }
 
   public static Actions actions(String rev, Action ...actions) {

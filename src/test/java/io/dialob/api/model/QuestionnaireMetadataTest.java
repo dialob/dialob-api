@@ -25,7 +25,7 @@ public class QuestionnaireMetadataTest {
   @Test
   public void shouldDeserializeUnknownAttributesToAdditionalProperties() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
-    Questionnaire.Metadata metadata = objectMapper.readValue("{\"formId\":\"123\",\"extraProp\":\"extraValue\"}", Questionnaire.Metadata.class);
+    Questionnaire.Metadata metadata = objectMapper.readValue("{\"formId\":\"123\",\"status\":\"NEW\",\"extraProp\":\"extraValue\"}", Questionnaire.Metadata.class);
     assertTrue(metadata.getAdditionalProperties().size() > 0);
     assertEquals("extraValue", metadata.getAdditionalProperties().get("extraProp"));
   }
@@ -33,6 +33,6 @@ public class QuestionnaireMetadataTest {
   public void shouldSerializeAdditionalPropertiesToJsonAttributes() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
     Questionnaire.Metadata metadata = ImmutableMetadata.builder().formId("123").putAdditionalProperties("extraProp","extraValue").build();
-    assertEquals("{\"formId\":\"123\",\"extraProp\":\"extraValue\"}", objectMapper.writeValueAsString(metadata));
+    assertEquals("{\"formId\":\"123\",\"status\":\"NEW\",\"extraProp\":\"extraValue\"}", objectMapper.writeValueAsString(metadata));
   }
 }
