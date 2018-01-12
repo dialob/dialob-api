@@ -86,7 +86,7 @@ public interface Form extends Serializable {
 
     @Nullable String getDefaultSubmitUrl();
 
-    @Nullable Set<String> getLanguages();
+    Set<String> getLanguages();
 
     @JsonInclude
     @JsonAnyGetter

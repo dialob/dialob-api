@@ -18,7 +18,7 @@ public interface Variable extends Serializable {
   @NotNull
   String getName();
 
-  @NotNull
+  @Nullable
   String getExpression();
 
   @Nullable

@@ -36,6 +36,7 @@ public interface ServiceCall extends Serializable {
    * Service input
    * variable defines name of query parameter and expression is assigned value
    */
+  @Value.Immutable
   @JsonSerialize(as = ImmutableServiceCall.QueryParameter.class)
   @JsonDeserialize(as = ImmutableServiceCall.QueryParameter.class)
   @Gson.TypeAdapters
@@ -55,6 +56,7 @@ public interface ServiceCall extends Serializable {
    * variable defines name target of variable to which resolved value is assigned
    * expression is XPath, JSONPointer or similar that extracts result from response
    */
+  @Value.Immutable
   @JsonSerialize(as = ImmutableServiceCall.OutputVariable.class)
   @JsonDeserialize(as = ImmutableServiceCall.OutputVariable.class)
   @Gson.TypeAdapters
