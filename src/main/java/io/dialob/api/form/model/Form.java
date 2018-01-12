@@ -82,18 +82,15 @@ public interface Form extends Serializable {
 
     @Nullable String getSavedBy();
 
-    @Nullable
-    Set<String> getLabels();
+    @Nullable Set<String> getLabels();
 
     @Nullable String getDefaultSubmitUrl();
 
-    Set<String> getLanguages();
+    @Nullable Set<String> getLanguages();
 
     @JsonInclude
     @JsonAnyGetter
     @AllowNulls
     Map<String,Object> getAdditionalProperties();
-
   }
-
 }
