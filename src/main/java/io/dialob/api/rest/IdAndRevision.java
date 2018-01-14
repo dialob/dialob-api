@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
+import javax.annotation.Nonnull;
 import java.io.Serializable;
 
 @Value.Immutable
@@ -31,10 +32,12 @@ public interface IdAndRevision extends Serializable {
 
   @JsonProperty("_id")
   @Gson.Named("_id")
+  @Nonnull
   String getId();
 
   @JsonProperty("_rev")
   @Gson.Named("_rev")
+  @Nonnull
   String getRev();
 
 }

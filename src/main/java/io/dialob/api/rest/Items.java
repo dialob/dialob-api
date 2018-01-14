@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -31,10 +32,13 @@ import java.util.List;
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public interface Items {
 
-  @Nullable String getActiveItem();
+  @Nonnull
+  String getActiveItem();
 
-  @Nullable List<String> getItems();
+  @Nonnull
+  List<String> getItems();
 
-  @Nullable List<String> getAvailableItems();
+  @Nonnull
+  List<String> getAvailableItems();
 
 }

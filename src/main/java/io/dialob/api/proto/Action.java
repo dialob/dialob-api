@@ -31,7 +31,7 @@ import java.util.List;
 @JsonSerialize(as = ImmutableAction.class)
 @JsonDeserialize(as = ImmutableAction.class)
 @Gson.TypeAdapters
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public interface Action extends Serializable {
 
   public enum Type {

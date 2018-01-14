@@ -7,6 +7,7 @@ import io.dialob.api.questionnaire.model.ImmutableMetadata;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -25,6 +26,7 @@ public interface Metadata extends Serializable {
 
   @NotNull
   @Size(min = 1)
+  @Nonnull
   String getLabel();
 
   @Nullable
