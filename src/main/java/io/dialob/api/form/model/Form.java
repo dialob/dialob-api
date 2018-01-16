@@ -43,7 +43,7 @@ import java.util.Set;
 @JsonDeserialize(as = ImmutableForm.class)
 @Gson.TypeAdapters
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
-@JsonIgnoreProperties({"saving","rules","updated","failed"})
+@JsonIgnoreProperties({"saving","rules","updated","failed", "serviceCalls"})
 public interface Form extends Serializable {
 
   @JsonProperty("_id")
@@ -61,10 +61,6 @@ public interface Form extends Serializable {
   @Valid
   @Nonnull
   Map<String, FormItem> getData();
-
-  @Valid
-  @Nonnull
-  Map<String, ServiceCall> getServiceCalls();
 
   @Valid
   @NotNull
