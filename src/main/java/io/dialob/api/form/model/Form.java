@@ -32,7 +32,10 @@ import javax.annotation.Nullable;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Value.Immutable
 @Value.Enclosing
@@ -40,6 +43,7 @@ import java.util.*;
 @JsonDeserialize(as = ImmutableForm.class)
 @Gson.TypeAdapters
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties({"saving","rules","updated","failed"})
 public interface Form extends Serializable {
 
   @JsonProperty("_id")
@@ -58,20 +62,21 @@ public interface Form extends Serializable {
   @Nonnull
   Map<String, FormItem> getData();
 
+  @Valid
   @Nonnull
-  HashMap<String, ServiceCall> getServiceCalls();
+  Map<String, ServiceCall> getServiceCalls();
 
   @Valid
   @NotNull
   Metadata getMetadata();
 
   @Valid
-  @Nullable
+  @NotNull
   List<Variable> getVariables();
 
   @Valid
   @Nonnull
-  HashMap<String, Form> getNamespaces();
+  Map<String, Form> getNamespaces();
 
   @Valid
   @Nonnull
