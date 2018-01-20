@@ -25,10 +25,12 @@ import javax.annotation.Nullable;
 import java.io.Serializable;
 
 @Value.Immutable
+@Value.Modifiable
 @JsonSerialize(as = ImmutableError.class)
 @JsonDeserialize(as = ImmutableError.class)
 @Gson.TypeAdapters
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Value.Style(allParameters = true)
 public interface Error extends Serializable {
 
   String getId();

@@ -26,6 +26,7 @@ import org.immutables.value.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -35,9 +36,11 @@ import java.util.List;
 import java.util.Map;
 
 @Value.Immutable
+@Value.Modifiable
+@Value.Style(deepImmutablesDetection = true)
 @JsonSerialize(as = ImmutableQuestionnaire.class)
 @JsonDeserialize(as = ImmutableQuestionnaire.class)
-@Gson.TypeAdapters
+@Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public interface Questionnaire extends Serializable {
 
@@ -53,22 +56,22 @@ public interface Questionnaire extends Serializable {
   @Nullable
   String getRev();
 
-  @Nullable
+  @Nonnull
   List<Answer> getAnswers();
 
-  @Nullable
+  @Nonnull
   List<Table> getTables();
 
-  @Nullable
+  @Nonnull
   List<ContextValue> getContext();
 
   @Nullable
   String getActiveItem();
 
-  @Nullable
+  @Nonnull
   List<Error> getErrors();
 
-  @Nullable
+  @Nonnull
   List<VariableValue> getVariableValues();
 
   @Valid
@@ -76,6 +79,7 @@ public interface Questionnaire extends Serializable {
   Metadata getMetadata();
 
   @Value.Immutable
+  @Value.Modifiable
   @JsonSerialize(as = ImmutableMetadata.class)
   @JsonDeserialize(as = ImmutableMetadata.class)
   @Gson.TypeAdapters

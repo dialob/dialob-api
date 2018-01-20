@@ -31,7 +31,7 @@ import java.util.Set;
 @Value.Immutable
 @JsonSerialize(as = ImmutableQuestion.class)
 @JsonDeserialize(as = ImmutableQuestion.class)
-@Gson.TypeAdapters
+@Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public interface Question extends Serializable {
 

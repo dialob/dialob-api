@@ -28,19 +28,21 @@ import java.util.List;
 @Value.Immutable
 @JsonSerialize(as = ImmutableValueSet.class)
 @JsonDeserialize(as = ImmutableValueSet.class)
-@Gson.TypeAdapters
+@Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
+@Value.Style(deepImmutablesDetection = true)
 public interface ValueSet extends Serializable {
 
   String getId();
 
-  @Nullable List<Entry> getEntries();
+  List<Entry> getEntries();
 
   @Value.Immutable
   @JsonSerialize(as = ImmutableEntry.class)
   @JsonDeserialize(as = ImmutableEntry.class)
   @Gson.TypeAdapters
   @JsonInclude(JsonInclude.Include.NON_NULL)
+  @Value.Style(allParameters = true)
   interface Entry extends Serializable {
 
     String getKey();

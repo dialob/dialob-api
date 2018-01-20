@@ -26,6 +26,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Value.Immutable
+@Value.Modifiable
 @JsonSerialize(as = ImmutableTable.class)
 @JsonDeserialize(as = ImmutableTable.class)
 @Gson.TypeAdapters

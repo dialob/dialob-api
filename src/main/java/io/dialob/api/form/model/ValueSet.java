@@ -30,26 +30,24 @@ import java.util.Map;
 @Value.Enclosing
 @JsonSerialize(as = ImmutableValueSet.class)
 @JsonDeserialize(as = ImmutableValueSet.class)
-@Gson.TypeAdapters
+@Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public interface ValueSet extends Serializable {
 
   @Nonnull
   String getId();
 
-  @Nonnull
   List<Entry> getEntries();
 
   @Value.Immutable
   @JsonSerialize(as = ImmutableValueSet.Entry.class)
   @JsonDeserialize(as = ImmutableValueSet.Entry.class)
-  @Gson.TypeAdapters
+  @Gson.TypeAdapters(emptyAsNulls = true)
   interface Entry extends Serializable {
 
     @Nonnull
     String getId();
 
-    @Nonnull
     Map<String, String> getLabel();
   }
 }

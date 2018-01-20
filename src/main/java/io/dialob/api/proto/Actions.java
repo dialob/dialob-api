@@ -28,7 +28,7 @@ import java.util.List;
 @Value.Immutable
 @JsonSerialize(as = ImmutableActions.class)
 @JsonDeserialize(as = ImmutableActions.class)
-@Gson.TypeAdapters
+@Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public interface Actions extends Serializable {
 

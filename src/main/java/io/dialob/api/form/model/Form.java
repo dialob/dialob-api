@@ -41,7 +41,7 @@ import java.util.Set;
 @Value.Enclosing
 @JsonSerialize(as = ImmutableForm.class)
 @JsonDeserialize(as = ImmutableForm.class)
-@Gson.TypeAdapters
+@Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties({"saving","rules","updated","failed", "serviceCalls"})
 public interface Form extends Serializable {
@@ -81,7 +81,7 @@ public interface Form extends Serializable {
   @Value.Immutable
   @JsonSerialize(as = ImmutableForm.Metadata.class)
   @JsonDeserialize(as = ImmutableForm.Metadata.class)
-  @Gson.TypeAdapters
+  @Gson.TypeAdapters(emptyAsNulls = true)
   @JsonIgnoreProperties(ignoreUnknown = true)
   @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
   interface Metadata extends Serializable {

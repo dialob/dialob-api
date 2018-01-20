@@ -26,14 +26,17 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Value.Immutable
+@Value.Modifiable
 @JsonSerialize(as = ImmutableAnswer.class)
 @JsonDeserialize(as = ImmutableAnswer.class)
 @Gson.TypeAdapters
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public interface Answer extends Serializable {
 
+  @Value.Parameter
   String getId();
 
+  @Value.Parameter
   @JsonInclude(JsonInclude.Include.ALWAYS)
   @Nullable Object getValue();
 
