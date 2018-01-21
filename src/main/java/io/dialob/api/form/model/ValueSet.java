@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 @Value.Immutable
-@Value.Enclosing
+@Value.Modifiable
 @JsonSerialize(as = ImmutableValueSet.class)
 @JsonDeserialize(as = ImmutableValueSet.class)
 @Gson.TypeAdapters(emptyAsNulls = true)
@@ -40,6 +40,8 @@ public interface ValueSet extends Serializable {
   List<Entry> getEntries();
 
   @Value.Immutable
+  @Value.Style(typeImmutable = "ImmutableValueSet*", typeModifiable = "ModifiableValueSet*")
+  @Value.Modifiable
   @JsonSerialize(as = ImmutableValueSet.Entry.class)
   @JsonDeserialize(as = ImmutableValueSet.Entry.class)
   @Gson.TypeAdapters(emptyAsNulls = true)

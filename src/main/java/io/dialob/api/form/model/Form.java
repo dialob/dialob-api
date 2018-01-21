@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Value.Immutable
-@Value.Enclosing
+@Value.Modifiable
 @JsonSerialize(as = ImmutableForm.class)
 @JsonDeserialize(as = ImmutableForm.class)
 @Gson.TypeAdapters(emptyAsNulls = true)
@@ -79,8 +79,10 @@ public interface Form extends Serializable {
   List<ValueSet> getValueSets();
 
   @Value.Immutable
-  @JsonSerialize(as = ImmutableForm.Metadata.class)
-  @JsonDeserialize(as = ImmutableForm.Metadata.class)
+  @Value.Style(typeImmutable = "ImmutableForm*", typeModifiable = "ModifiableForm*")
+  @Value.Modifiable
+  @JsonSerialize(as = ImmutableFormMetadata.class)
+  @JsonDeserialize(as = ImmutableFormMetadata.class)
   @Gson.TypeAdapters(emptyAsNulls = true)
   @JsonIgnoreProperties(ignoreUnknown = true)
   @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)

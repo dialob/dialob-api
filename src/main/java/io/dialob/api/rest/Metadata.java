@@ -3,7 +3,6 @@ package io.dialob.api.rest;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.dialob.api.questionnaire.model.ImmutableMetadata;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 

@@ -27,6 +27,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 @Value.Immutable
+@Value.Modifiable
 @JsonSerialize(as = ImmutableValidation.class)
 @JsonDeserialize(as = ImmutableValidation.class)
 @Gson.TypeAdapters

@@ -38,7 +38,7 @@ public final class QuestionnaireFactory {
 
   public static Questionnaire questionnaire(String id, String formId) {
     return ImmutableQuestionnaire.builder().id(id)
-          .metadata(ImmutableMetadata.builder().formId(formId).build()).build();
+          .metadata(ImmutableQuestionnaireMetadata.builder().formId(formId).build()).build();
   }
 
 }

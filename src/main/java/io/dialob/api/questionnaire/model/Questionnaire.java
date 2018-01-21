@@ -80,8 +80,9 @@ public interface Questionnaire extends Serializable {
 
   @Value.Immutable
   @Value.Modifiable
-  @JsonSerialize(as = ImmutableMetadata.class)
-  @JsonDeserialize(as = ImmutableMetadata.class)
+  @Value.Style(typeImmutable = "ImmutableQuestionnaire*", typeModifiable = "ModifiableQuestionnaire*")
+  @JsonSerialize(as = ImmutableQuestionnaireMetadata.class)
+  @JsonDeserialize(as = ImmutableQuestionnaireMetadata.class)
   @Gson.TypeAdapters
   @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
   abstract class Metadata implements Serializable {

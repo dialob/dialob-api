@@ -26,6 +26,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Value.Immutable
+@Value.Modifiable
 @JsonSerialize(as = ImmutableVariable.class)
 @JsonDeserialize(as = ImmutableVariable.class)
 @Gson.TypeAdapters
@@ -33,9 +34,11 @@ import java.io.Serializable;
 public interface Variable extends Serializable {
 
   @NotNull
+  @Value.Parameter
   String getName();
 
   @Nullable
+  @Value.Parameter
   String getExpression();
 
   @Nullable
