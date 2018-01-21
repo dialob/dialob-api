@@ -42,8 +42,8 @@ public interface ValueSet extends Serializable {
   @Value.Immutable
   @Value.Style(typeImmutable = "ImmutableValueSet*", typeModifiable = "ModifiableValueSet*")
   @Value.Modifiable
-  @JsonSerialize(as = ImmutableValueSet.Entry.class)
-  @JsonDeserialize(as = ImmutableValueSet.Entry.class)
+  @JsonSerialize(as = ImmutableValueSetEntry.class)
+  @JsonDeserialize(as = ImmutableValueSetEntry.class)
   @Gson.TypeAdapters(emptyAsNulls = true)
   interface Entry extends Serializable {
 
