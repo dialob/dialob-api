@@ -42,6 +42,7 @@ public interface Action extends Serializable {
     COMPLETE(true),
     ADD_ROW(true),
     DELETE_ROW(true),
+    REMOVE_ANSWERS(true),
     RESET(false),
     QUESTION(false),
     REMOVE_QUESTIONS(false),
