@@ -19,11 +19,16 @@ public final class ActionsFactory {
 
   public static final ImmutableAction PREVIOUS_ACTION = ImmutableAction.builder().type(Action.Type.PREVIOUS).build();
   public static final ImmutableAction NEXT_ACTION = ImmutableAction.builder().type(Action.Type.NEXT).build();
+  public static final ImmutableAction REMOVE_ANSWERS_ACTION = ImmutableAction.builder().type(Action.Type.REMOVE_ANSWERS).build();
 
   private ActionsFactory() {}
 
   public static Action answer(String questionId, Object answer) {
     return ImmutableAction.builder().id(questionId).answer(answer).type(Action.Type.ANSWER).build();
+  }
+
+  public static Action removeAnswers() {
+    return REMOVE_ANSWERS_ACTION;
   }
 
   public static Action next() {
