@@ -35,6 +35,7 @@ public class Action implements Serializable {
     UPDATE_QUESTION,
     REMOVE_ALL,
     ANSWER_QUESTION,
+    REMOVE_ANSWERS,
     NEXT_PAGE,
     PREVIOUS_PAGE,
     GOTO_PAGE,
