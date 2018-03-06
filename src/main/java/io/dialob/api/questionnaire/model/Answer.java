@@ -40,6 +40,13 @@ public interface Answer extends Serializable {
   @JsonInclude(JsonInclude.Include.ALWAYS)
   @Nullable Object getValue();
 
+  /**
+   * Text and number field answers stored as strings
+   *
+   * @return user's answer in original format
+   */
+  @Nullable String getAnswer();
+
   @Nullable Date getUpdated();
 
   @Nullable String getUserId();
