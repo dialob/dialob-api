@@ -78,6 +78,13 @@ public interface Form extends Serializable {
   @Nonnull
   List<ValueSet> getValueSets();
 
+  /**
+   *
+   * @return error text for required fields, unless not defined per item
+   */
+  @Nonnull
+  Map<String, String> getRequiredErrorText();
+
   @Value.Immutable
   @Value.Style(typeImmutable = "ImmutableForm*", typeModifiable = "ModifiableForm*")
   @Value.Modifiable

@@ -55,7 +55,7 @@ public interface FormItem extends Serializable {
   String getRequired();
 
   @Nonnull
-  Map<String, String> getRequiredLabel();
+  Map<String, String> getRequiredErrorText();
 
   @Nullable
   Boolean getReadOnly();
