@@ -36,16 +36,16 @@ public interface Answer extends Serializable {
   @Value.Parameter
   String getId();
 
+  /**
+   * Text and number field answers stored in orignal format
+   *
+   * @return user's answer in original format
+   */
   @Value.Parameter
   @JsonInclude(JsonInclude.Include.ALWAYS)
   @Nullable Object getValue();
 
-  /**
-   * Text and number field answers stored as strings
-   *
-   * @return user's answer in original format
-   */
-  @Nullable String getAnswer();
+  @Nullable Object getAcceptedValue();
 
   @Nullable Date getUpdated();
 
