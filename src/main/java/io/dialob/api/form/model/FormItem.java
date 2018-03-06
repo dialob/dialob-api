@@ -42,15 +42,6 @@ public interface FormItem extends Serializable {
   @NotNull
   String getId();
 
-//  "text",
-//   "boolean",
-//   "list",
-//   "date",
-//   "time",
-//   "number",
-//   "decimal",
-//   "multichoice"
-
   @NotNull
   String getType();
 
@@ -62,6 +53,9 @@ public interface FormItem extends Serializable {
 
   @Nullable
   String getRequired();
+
+  @Nonnull
+  Map<String, String> getRequiredLabel();
 
   @Nullable
   Boolean getReadOnly();
