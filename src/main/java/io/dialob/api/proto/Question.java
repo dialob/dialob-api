@@ -47,6 +47,8 @@ public interface Question extends Serializable {
 
   @Nullable Boolean getRequired();
 
+  @Nullable Boolean getCompleted();
+
   @Nullable List<String> getClassName();
 
   @Nullable Object getValue();
