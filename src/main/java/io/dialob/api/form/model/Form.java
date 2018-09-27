@@ -58,6 +58,9 @@ public interface Form extends Serializable {
   @Nullable
   String getRev();
 
+  @Nullable
+  String getName();
+
   @Valid
   @Nonnull
   Map<String, FormItem> getData();
