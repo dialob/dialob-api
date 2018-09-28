@@ -18,7 +18,7 @@ package io.dialob.api.rest;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
@@ -35,14 +35,14 @@ import java.util.List;
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public abstract class Errors implements Serializable {
 
-  @ApiModelProperty(notes = "error timestamp")
+  @Schema(description = "error timestamp")
   @Nullable
   @Value.Default
   public Date getTimestamp() {
     return new Date();
   }
 
-  @ApiModelProperty(notes = "HTTP status code", example = "403")
+  @Schema(description = "HTTP status code", example = "403")
   @Nullable
   public abstract Integer getStatus();
 
@@ -52,14 +52,14 @@ public abstract class Errors implements Serializable {
   @Nullable
   public abstract String getMessage();
 
-  @ApiModelProperty(notes = "Java stacktrace, if server is configured to send one.")
+  @Schema(description = "Java stacktrace, if server is configured to send one.")
   @Nullable
   public abstract String getTrace();
 
   @Nullable
   public abstract String getPath();
 
-  @ApiModelProperty(notes = "List of identified errors in entity")
+  @Schema(description = "List of identified errors in entity")
   @Nullable
   public abstract List<Error> getErrors();
 
@@ -70,19 +70,19 @@ public abstract class Errors implements Serializable {
   @Gson.TypeAdapters
   public interface Error extends Serializable {
 
-    @ApiModelProperty(notes = "Error classifying code")
+    @Schema(description = "Error classifying code")
     @Nullable
     String getCode();
 
-    @ApiModelProperty(notes = "Javascript path notation to entity attribute")
+    @Schema(description = "Javascript path notation to entity attribute")
     @Nullable
     String getContext();
 
-    @ApiModelProperty(notes = "Invalid value on entity attribute")
+    @Schema(description = "Invalid value on entity attribute")
     @Nullable
     Object getRejectedValue();
 
-    @ApiModelProperty(notes = "Error description")
+    @Schema(description = "Error description")
     @Nullable
     String getError();
   }
