@@ -45,6 +45,8 @@ public interface Answer extends Serializable {
   @JsonInclude(JsonInclude.Include.ALWAYS)
   @Nullable Object getValue();
 
+  @Nullable String getType();
+
   @Nullable Object getAcceptedValue();
 
   @Nullable Date getUpdated();
