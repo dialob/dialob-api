@@ -28,6 +28,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jackson.version>2.8.11.2</jackson.version>
+    <jackson-annotation.version>2.8.11</jackson-annotation.version>
     <spring-data-commons.version>1.13.15.RELEASE</spring-data-commons.version>
     <validation-api.version>1.0.0.GA</validation-api.version>
     <immutables.version>2.7.1</immutables.version>
@@ -125,7 +126,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>${jackson.version}</version>
+      <version>${jackson-annotation.version}</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
