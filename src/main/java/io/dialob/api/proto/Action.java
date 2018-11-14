@@ -54,7 +54,8 @@ public interface Action extends Serializable {
     SERVER_ERROR(false),
     ROWS(false),
     SET_VALUE(false),
-    SET_FAILED(false);
+    SET_FAILED(false),
+    LOCALE(false);
 
     final boolean clientAction;
 
