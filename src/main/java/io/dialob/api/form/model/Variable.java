@@ -44,8 +44,17 @@ public interface Variable extends Serializable {
   @Nullable
   Object getDefaultValue();
 
+  /**
+   * @return true when this is context variable
+   */
   @Nullable
   Boolean getContext();
+
+  /**
+   * @return true when context variable is confidential and should not be sent to client.
+   */
+  @Nullable
+  Boolean getConfidential();
 
   @Nullable
   String getContextType();
