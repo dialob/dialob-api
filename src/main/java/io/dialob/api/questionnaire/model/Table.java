@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
-import javax.annotation.Nonnull;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -33,10 +33,10 @@ import java.util.List;
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 public interface Table extends Serializable {
 
-  @Nonnull
+  @NotNull
   String getTableId();
 
-  @Nonnull
+  @NotNull
   List<String> getRows();
 
 }

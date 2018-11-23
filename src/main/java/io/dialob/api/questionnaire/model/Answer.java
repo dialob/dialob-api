@@ -18,10 +18,10 @@ package io.dialob.api.questionnaire.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.dialob.api.annotation.Nullable;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
-import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -31,6 +31,7 @@ import java.util.Date;
 @JsonDeserialize(as = ImmutableAnswer.class)
 @Gson.TypeAdapters
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Value.Style(validationMethod = Value.Style.ValidationMethod.NONE)
 public interface Answer extends Serializable {
 
   @Value.Parameter

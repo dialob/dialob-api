@@ -21,13 +21,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.dialob.api.annotation.AllowNulls;
+import io.dialob.api.annotation.Nullable;
+import io.dialob.api.validation.WithValidation;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -37,12 +37,12 @@ import java.util.Map;
 
 @Value.Immutable
 @Value.Modifiable
-@Value.Style(deepImmutablesDetection = true)
+@Value.Style(deepImmutablesDetection = true, validationMethod = Value.Style.ValidationMethod.NONE)
 @JsonSerialize(as = ImmutableQuestionnaire.class)
 @JsonDeserialize(as = ImmutableQuestionnaire.class)
 @Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
-public interface Questionnaire extends Serializable {
+public interface Questionnaire extends WithValidation<Questionnaire>, Serializable {
 
   @JsonProperty("_id")
   @Gson.Named("_id")
@@ -56,22 +56,22 @@ public interface Questionnaire extends Serializable {
   @Nullable
   String getRev();
 
-  @Nonnull
+  @NotNull
   List<Answer> getAnswers();
 
-  @Nonnull
+  @NotNull
   List<Table> getTables();
 
-  @Nonnull
+  @NotNull
   List<ContextValue> getContext();
 
   @Nullable
   String getActiveItem();
 
-  @Nonnull
+  @NotNull
   List<Error> getErrors();
 
-  @Nonnull
+  @NotNull
   List<VariableValue> getVariableValues();
 
   @Valid
@@ -80,7 +80,7 @@ public interface Questionnaire extends Serializable {
 
   @Value.Immutable
   @Value.Modifiable
-  @Value.Style(typeImmutable = "ImmutableQuestionnaire*", typeModifiable = "ModifiableQuestionnaire*")
+  @Value.Style(typeImmutable = "ImmutableQuestionnaire*", typeModifiable = "ModifiableQuestionnaire*", validationMethod = Value.Style.ValidationMethod.NONE)
   @JsonSerialize(as = ImmutableQuestionnaireMetadata.class)
   @JsonDeserialize(as = ImmutableQuestionnaireMetadata.class)
   @Gson.TypeAdapters

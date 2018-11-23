@@ -18,11 +18,11 @@ package io.dialob.api.questionnaire.model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.dialob.api.proto.ImmutableQuestion;
 import io.dialob.api.proto.Question;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QuestionTest {
   @Test

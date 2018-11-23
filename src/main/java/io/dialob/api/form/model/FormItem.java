@@ -15,16 +15,14 @@
  */
 package io.dialob.api.form.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.dialob.api.annotation.Nullable;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
@@ -37,6 +35,7 @@ import java.util.Map;
 @Gson.TypeAdapters
 @JsonIgnoreProperties({"style", "options"})
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
+@Value.Style(validationMethod = Value.Style.ValidationMethod.NONE)
 public interface FormItem extends Serializable {
 
   @NotNull
@@ -45,31 +44,31 @@ public interface FormItem extends Serializable {
   @NotNull
   String getType();
 
-  @Nonnull
+  @NotNull
   Map<String, String> getLabel();
 
-  @Nonnull
+  @NotNull
   Map<String, String> getDescription();
 
   @Nullable
   String getRequired();
 
-  @Nonnull
+  @NotNull
   Map<String, String> getRequiredErrorText();
 
   @Nullable
   Boolean getReadOnly();
 
-  @Nonnull
+  @NotNull
   List<String> getItems();
 
-  @Nonnull
+  @NotNull
   List<String> getClassName();
 
   @Nullable
   String getActiveWhen();
 
-  @Nonnull
+  @NotNull
   List<Validation> getValidations();
 
   @Nullable

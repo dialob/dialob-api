@@ -17,8 +17,13 @@ package io.dialob.api.questionnaire.model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QuestionnaireTest {
 
@@ -29,7 +34,27 @@ public class QuestionnaireTest {
       .registerTypeAdapterFactory(new GsonAdaptersQuestionnaire())
       .create();
     String json = gson.toJson(questionnaire);
-    Assert.assertEquals("{\"_id\":\"12\",\"metadata\":{\"formId\":\"123\",\"status\":\"NEW\"}}", json);
+    Assertions.assertEquals("{\"_id\":\"12\",\"metadata\":{\"formId\":\"123\",\"status\":\"NEW\"}}", json);
   }
 
+
+  @Test
+  public void shouldThrowConstraintExceptionOnMissingMetadata() {
+    ConstraintViolationException exception = Assertions.assertThrows(ConstraintViolationException.class, () -> ImmutableQuestionnaire.builder().build());
+    assertEquals(1, exception.getConstraintViolations().size());
+    ConstraintViolation constraintViolation = exception.getConstraintViolations().iterator().next();
+
+    assertEquals("may not be null", constraintViolation.getMessage());
+    assertEquals("metadata", constraintViolation.getPropertyPath().toString());
+  }
+
+  @Test
+  public void shouldThrowConstraintExceptionOnPartialMetadata() {
+    ConstraintViolationException exception = Assertions.assertThrows(ConstraintViolationException.class, () -> ImmutableQuestionnaire.builder().metadata(ImmutableQuestionnaireMetadata.builder().build()).build());
+    assertEquals(1, exception.getConstraintViolations().size());
+    ConstraintViolation constraintViolation = exception.getConstraintViolations().iterator().next();
+
+    assertEquals("may not be null", constraintViolation.getMessage());
+    assertEquals("metadata.formId", constraintViolation.getPropertyPath().toString());
+  }
 }

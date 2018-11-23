@@ -18,11 +18,11 @@ package io.dialob.api.form.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.dialob.api.annotation.Nullable;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Map;
 
@@ -32,9 +32,10 @@ import java.util.Map;
 @JsonDeserialize(as = ImmutableValidation.class)
 @Gson.TypeAdapters
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
+@Value.Style(validationMethod = Value.Style.ValidationMethod.NONE)
 public interface Validation extends Serializable {
 
-  @Nonnull
+  @NotNull
   Map<String, String> getMessage();
 
   @Nullable

@@ -18,10 +18,11 @@ package io.dialob.api.questionnaire.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.dialob.api.annotation.Nullable;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
-import javax.annotation.Nullable;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Value.Immutable
@@ -30,12 +31,14 @@ import java.io.Serializable;
 @JsonDeserialize(as = ImmutableContextValue.class)
 @Gson.TypeAdapters
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Value.Style(allParameters = true)
+@Value.Style(allParameters = true, validationMethod = Value.Style.ValidationMethod.NONE)
 public interface ContextValue extends Serializable {
 
+  @NotNull
   String getId();
 
   @JsonInclude(JsonInclude.Include.ALWAYS)
-  @Nullable Object getValue();
+  @Nullable
+  Object getValue();
 
 }

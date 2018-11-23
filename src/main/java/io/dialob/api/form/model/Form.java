@@ -22,13 +22,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.dialob.api.annotation.AllowNulls;
+import io.dialob.api.annotation.Nullable;
+import io.dialob.api.validation.WithValidation;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -44,7 +44,8 @@ import java.util.Set;
 @Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 @JsonIgnoreProperties({"saving","rules","updated","failed", "serviceCalls"})
-public interface Form extends Serializable {
+@Value.Style(validationMethod = Value.Style.ValidationMethod.NONE)
+public interface Form extends WithValidation<Form>, Serializable {
 
   @JsonProperty("_id")
   @Gson.Named("_id")
@@ -62,7 +63,7 @@ public interface Form extends Serializable {
   String getName();
 
   @Valid
-  @Nonnull
+  @NotNull
   Map<String, FormItem> getData();
 
   @Valid
@@ -74,22 +75,22 @@ public interface Form extends Serializable {
   List<Variable> getVariables();
 
   @Valid
-  @Nonnull
+  @NotNull
   Map<String, Form> getNamespaces();
 
   @Valid
-  @Nonnull
+  @NotNull
   List<ValueSet> getValueSets();
 
   /**
    *
    * @return error text for required fields, unless not defined per item
    */
-  @Nonnull
+  @NotNull
   Map<String, String> getRequiredErrorText();
 
   @Value.Immutable
-  @Value.Style(typeImmutable = "ImmutableForm*", typeModifiable = "ModifiableForm*")
+  @Value.Style(typeImmutable = "ImmutableForm*", typeModifiable = "ModifiableForm*", validationMethod = Value.Style.ValidationMethod.NONE)
   @Value.Modifiable
   @JsonSerialize(as = ImmutableFormMetadata.class)
   @JsonDeserialize(as = ImmutableFormMetadata.class)
@@ -98,7 +99,8 @@ public interface Form extends Serializable {
   @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
   interface Metadata extends Serializable {
 
-    @Nullable String getLabel();
+    @NotNull
+    String getLabel();
 
     @Nullable Date getCreated();
 
@@ -112,12 +114,12 @@ public interface Form extends Serializable {
 
     @Nullable String getSavedBy();
 
-    @Nonnull
+    @NotNull
     Set<String> getLabels();
 
     @Nullable String getDefaultSubmitUrl();
 
-    @Nonnull
+    @NotNull
     Set<String> getLanguages();
 
     @JsonInclude
