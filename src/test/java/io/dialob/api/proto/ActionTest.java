@@ -16,6 +16,7 @@
 package io.dialob.api.proto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,7 +25,7 @@ public class ActionTest {
 
   @Test
   public void shouldParseAction() throws Exception {
-    ObjectMapper objectMapper = new ObjectMapper();
+    ObjectMapper objectMapper = new ObjectMapper().registerModule(new GuavaModule());
     Action action = objectMapper.readValue("{\"type\":\"ANSWER\"}", Action.class);
     assertEquals(ImmutableAction.builder()
         .type(Action.Type.ANSWER).build(),

@@ -16,6 +16,7 @@
 package io.dialob.api.questionnaire.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import io.dialob.api.proto.ImmutableQuestion;
 import io.dialob.api.proto.Question;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class QuestionTest {
   @Test
   public void shouldDeserializePropsToMap() throws Exception {
-    ObjectMapper objectMapper = new ObjectMapper();
+    ObjectMapper objectMapper = new ObjectMapper().registerModule(new GuavaModule());
     Question question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":\"extraValue\"}}", Question.class);
     assertEquals("extraValue", question.getProps().get("extraProp"));
     question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":1}}", Question.class);
