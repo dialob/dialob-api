@@ -83,7 +83,7 @@ public interface Questionnaire extends WithValidation<Questionnaire>, Serializab
 
   @Value.Immutable
   @Value.Modifiable
-  @Value.Style(typeImmutable = "ImmutableQuestionnaire*", typeModifiable = "ModifiableQuestionnaire*", validationMethod = Value.Style.ValidationMethod.NONE)
+  @Value.Style(typeImmutable = "ImmutableQuestionnaire*", typeModifiable = "ModifiableQuestionnaire*", validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
   @JsonSerialize(as = ImmutableQuestionnaireMetadata.class)
   @JsonDeserialize(as = ImmutableQuestionnaireMetadata.class)
   @Gson.TypeAdapters

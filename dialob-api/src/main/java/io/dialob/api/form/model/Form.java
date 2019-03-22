@@ -93,7 +93,7 @@ public interface Form extends WithValidation<Form>, Serializable {
   Map<String, String> getRequiredErrorText();
 
   @Value.Immutable
-  @Value.Style(typeImmutable = "ImmutableForm*", typeModifiable = "ModifiableForm*", validationMethod = Value.Style.ValidationMethod.NONE)
+  @Value.Style(typeImmutable = "ImmutableForm*", typeModifiable = "ModifiableForm*", validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
   @Value.Modifiable
   @JsonSerialize(as = ImmutableFormMetadata.class)
   @JsonDeserialize(as = ImmutableFormMetadata.class)
