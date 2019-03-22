@@ -41,7 +41,7 @@ public interface ValueSet extends Serializable {
   List<Entry> getEntries();
 
   @Value.Immutable
-  @Value.Style(typeImmutable = "ImmutableValueSet*", typeModifiable = "ModifiableValueSet*")
+  @Value.Style(typeImmutable = "ImmutableValueSet*", typeModifiable = "ModifiableValueSet*", jdkOnly = true)
   @Value.Modifiable
   @JsonSerialize(as = ImmutableValueSetEntry.class)
   @JsonDeserialize(as = ImmutableValueSetEntry.class)

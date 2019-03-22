@@ -33,6 +33,7 @@ import java.util.List;
 @JsonDeserialize(as = ImmutableErrors.class)
 @Gson.TypeAdapters
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
+@Value.Style(jdkOnly = true)
 public abstract class Errors implements Serializable {
 
   @Schema(description = "error timestamp")
@@ -68,6 +69,7 @@ public abstract class Errors implements Serializable {
   @JsonSerialize(as = ImmutableErrors.Error.class)
   @JsonDeserialize(as = ImmutableErrors.Error.class)
   @Gson.TypeAdapters
+  @Value.Style(jdkOnly = true)
   public interface Error extends Serializable {
 
     @Schema(description = "Error classifying code")
