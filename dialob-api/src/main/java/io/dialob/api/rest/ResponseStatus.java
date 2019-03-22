@@ -16,6 +16,6 @@ import java.io.Serializable;
 @Value.Style(validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
 public interface ResponseStatus extends Serializable {
 
-  Boolean isOk();
+  Boolean getOk();
 
 }
