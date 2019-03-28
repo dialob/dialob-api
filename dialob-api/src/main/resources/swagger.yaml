@@ -1177,7 +1177,7 @@ paths:
 securityDefinitions:
   ApiKey:
     type: apiKey
-    name: Authorization
+    name: x-api-key
     in: header
 definitions:
   Answer:
