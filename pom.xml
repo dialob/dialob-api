@@ -42,6 +42,9 @@
     <swagger-core.version>2.0.7</swagger-core.version>
     <swagger-maven-plugin-version>3.1.8</swagger-maven-plugin-version>
     <okhttp.version>2.7.5</okhttp.version>
+    <feign.version>9.7.0</feign.version> <!-- generator not compatible with 10.1 -->
+    <feign.form.version>3.7.0</feign.form.version>
+    <apache.oltu.version>1.0.1</apache.oltu.version> <!-- generator not compatible with 1.0.2 -->
   </properties>
 
   <build>
@@ -218,6 +221,39 @@
         <artifactId>logging-interceptor</artifactId>
         <version>${okhttp.version}</version>
       </dependency>
+
+      <!-- deps needed for feign -->
+      <dependency>
+        <groupId>io.github.openfeign</groupId>
+        <artifactId>feign-core</artifactId>
+        <version>${feign.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.openfeign</groupId>
+        <artifactId>feign-okhttp</artifactId>
+        <version>${feign.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.openfeign</groupId>
+        <artifactId>feign-jackson</artifactId>
+        <version>${feign.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.openfeign</groupId>
+        <artifactId>feign-slf4j</artifactId>
+        <version>${feign.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.openfeign.form</groupId>
+        <artifactId>feign-form</artifactId>
+        <version>${feign.form.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.oltu.oauth2</groupId>
+        <artifactId>org.apache.oltu.oauth2.client</artifactId>
+        <version>${apache.oltu.version}</version>
+      </dependency>
+      
     </dependencies>
   </dependencyManagement>
 
