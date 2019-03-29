@@ -482,6 +482,8 @@ paths:
       responses:
         '200':
           description: OK
+          schema:
+            $ref: '#/definitions/Response'
         '209':
           description: Conflict
           schema:
