@@ -55,7 +55,7 @@
                 <importMapping>Answer=io.dialob.api.questionnaire.model.Answer</importMapping>
                 <importMapping>Question=io.dialob.api.form.model.FormItem</importMapping>
                 <importMapping>Questionnaire=io.dialob.api.questionnaire.model.Questionnaire</importMapping>
-                <importMapping>QuestionnaireListItem=io.dialob.api.questionnaire.model.Questionnaire.Metadata</importMapping>
+                <importMapping>QuestionnaireListItem=io.dialob.api.questionnaire.model.QuestionnaireListItem</importMapping>
               </importMappings>
             </configuration>
           </execution>
