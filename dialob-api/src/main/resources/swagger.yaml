@@ -24,15 +24,15 @@ paths:
       tags:
         - dialob-form-service
       summary: postForm
-      operationId: postFormUsingPOST
+      operationId: postForm
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
         - in: body
-          name: param0
-          description: param0
+          name: form
+          description: form
           required: true
           schema:
             $ref: '#/definitions/Form'
@@ -61,7 +61,7 @@ paths:
       tags:
         - dialob-form-service
       summary: getForm
-      operationId: getFormUsingGET
+      operationId: getForm
       produces:
         - application/json
       parameters:
@@ -95,7 +95,7 @@ paths:
       tags:
         - dialob-form-service
       summary: putForm
-      operationId: putFormUsingPUT
+      operationId: putForm
       consumes:
         - application/json
       produces:
@@ -123,8 +123,8 @@ paths:
           required: false
           type: string
         - in: body
-          name: param4
-          description: param4
+          name: form
+          description: form
           required: true
           schema:
             $ref: '#/definitions/Form'
@@ -161,7 +161,7 @@ paths:
       tags:
         - dialob-form-service
       summary: getFormTags
-      operationId: getFormTagsUsingGET
+      operationId: getFormTags
       produces:
         - application/json
       parameters:
@@ -192,7 +192,7 @@ paths:
       tags:
         - dialob-form-service
       summary: postFormTag
-      operationId: postFormTagUsingPOST
+      operationId: postFormTag
       consumes:
         - application/json
       produces:
@@ -204,8 +204,8 @@ paths:
           required: true
           type: string
         - in: body
-          name: param3
-          description: param3
+          name: formTag
+          description: formTag
           required: true
           schema:
             $ref: '#/definitions/FormTag'
@@ -245,7 +245,7 @@ paths:
       tags:
         - dialob-form-service
       summary: putFormTagLatest
-      operationId: putFormTagLatestUsingPUT
+      operationId: putFormTagLatest
       consumes:
         - application/json
       produces:
@@ -257,8 +257,8 @@ paths:
           required: true
           type: string
         - in: body
-          name: param1
-          description: param1
+          name: formTag
+          description: formTag
           required: true
           schema:
             $ref: '#/definitions/FormTag'
@@ -295,7 +295,7 @@ paths:
       tags:
         - dialob-form-service
       summary: getFormTag
-      operationId: getFormTagUsingGET
+      operationId: getFormTag
       produces:
         - application/json
       parameters:
@@ -330,7 +330,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaires
-      operationId: getQuestionnairesUsingGET
+      operationId: getQuestionnaires
       produces:
         - application/json
       responses:
@@ -355,15 +355,15 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: postQuestionnaire
-      operationId: postQuestionnaireUsingPOST
+      operationId: postQuestionnaire
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
         - in: body
-          name: param0
-          description: param0
+          name: questionnaire
+          description: questionnaire
           required: true
           schema:
             $ref: '#/definitions/Questionnaire'
@@ -392,7 +392,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaire
-      operationId: getQuestionnaireUsingGET
+      operationId: getQuestionnaire
       produces:
         - application/json
       parameters:
@@ -421,15 +421,15 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: putQuestionnaire
-      operationId: putQuestionnaireUsingPUT
+      operationId: putQuestionnaire
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
         - in: body
-          name: param1
-          description: param1
+          name: questionnaire
+          description: questionnaire
           required: true
           schema:
             $ref: '#/definitions/Questionnaire'
@@ -470,7 +470,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: deleteQuestionnaire
-      operationId: deleteQuestionnaireUsingDELETE
+      operationId: deleteQuestionnaire
       produces:
         - '*/*'
       parameters:
@@ -504,7 +504,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaireAnswers
-      operationId: getQuestionnaireAnswersUsingGET
+      operationId: getQuestionnaireAnswers
       produces:
         - application/json
       parameters:
@@ -535,15 +535,15 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: putQuestionnaireAnswers
-      operationId: putQuestionnaireAnswersUsingPOST
+      operationId: putQuestionnaireAnswers
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
         - in: body
-          name: param1
-          description: param1
+          name: answer
+          description: answer
           required: true
           schema:
             type: array
@@ -581,7 +581,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: putQuestionnaireAnswer
-      operationId: putQuestionnaireAnswerUsingPUT
+      operationId: putQuestionnaireAnswer
       consumes:
         - application/json
       produces:
@@ -593,8 +593,8 @@ paths:
           required: true
           type: string
         - in: body
-          name: param2
-          description: param2
+          name: answer
+          description: answer
           required: true
           schema:
             type: object
@@ -637,7 +637,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: deleteQuestionnaireAnswer
-      operationId: deleteQuestionnaireAnswerUsingDELETE
+      operationId: deleteQuestionnaireAnswer
       produces:
         - application/json
       parameters:
@@ -678,7 +678,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaireErrors
-      operationId: getQuestionnaireErrorsUsingGET
+      operationId: getQuestionnaireErrors
       produces:
         - application/json
       parameters:
@@ -710,7 +710,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaireItems
-      operationId: getQuestionnaireItemsUsingGET
+      operationId: getQuestionnaireItems
       produces:
         - application/json
       parameters:
@@ -742,7 +742,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaireItem
-      operationId: getQuestionnaireItemUsingGET
+      operationId: getQuestionnaireItem
       produces:
         - application/json
       parameters:
@@ -777,7 +777,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaireItemRows
-      operationId: getQuestionnaireItemRowsUsingGET
+      operationId: getQuestionnaireItemRows
       produces:
         - application/json
       parameters:
@@ -813,7 +813,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: postQuestionnaireItemRow
-      operationId: postQuestionnaireItemRowUsingPOST
+      operationId: postQuestionnaireItemRow
       consumes:
         - application/json
       produces:
@@ -856,7 +856,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: deleteQuestionnaireItemRow
-      operationId: deleteQuestionnaireItemRowUsingDELETE
+      operationId: deleteQuestionnaireItemRow
       produces:
         - application/json
       parameters:
@@ -902,7 +902,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnairePages
-      operationId: getQuestionnairePagesUsingGET
+      operationId: getQuestionnairePages
       produces:
         - application/json
       parameters:
@@ -931,15 +931,15 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: putQuestionnairePages
-      operationId: putQuestionnairePagesUsingPUT
+      operationId: putQuestionnairePages
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
         - in: body
-          name: param1
-          description: param1
+          name: items
+          description: items
           required: true
           schema:
             $ref: '#/definitions/Items'
@@ -981,7 +981,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaireStatus
-      operationId: getQuestionnaireStatusUsingGET
+      operationId: getQuestionnaireStatus
       produces:
         - application/json
       parameters:
@@ -1014,15 +1014,15 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: putQuestionnaireStatus
-      operationId: putQuestionnaireStatusUsingPUT
+      operationId: putQuestionnaireStatus
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
         - in: body
-          name: param1
-          description: param1
+          name: status
+          description: status
           required: true
           schema:
             type: string
@@ -1072,7 +1072,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaireValueSets
-      operationId: getQuestionnaireValueSetsUsingGET
+      operationId: getQuestionnaireValueSets
       produces:
         - application/json
       parameters:
@@ -1104,7 +1104,7 @@ paths:
       tags:
         - dialob-questionnaire-service
       summary: getQuestionnaireValueSet
-      operationId: getQuestionnaireValueSetUsingGET
+      operationId: getQuestionnaireValueSet
       produces:
         - application/json
       parameters:
@@ -1139,7 +1139,7 @@ paths:
       tags:
         - dialob-form-service
       summary: getTags
-      operationId: getTagsUsingGET
+      operationId: getTags
       produces:
         - application/json
       parameters:
