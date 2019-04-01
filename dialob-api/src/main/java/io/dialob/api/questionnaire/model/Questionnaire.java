@@ -63,9 +63,6 @@ public interface Questionnaire extends WithValidation<Questionnaire>, Serializab
   List<Answer> getAnswers();
 
   @NotNull
-  List<Table> getTables();
-
-  @NotNull
   List<ContextValue> getContext();
 
   @Nullable

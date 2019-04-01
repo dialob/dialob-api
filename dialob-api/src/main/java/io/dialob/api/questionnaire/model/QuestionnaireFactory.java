@@ -32,10 +32,6 @@ public final class QuestionnaireFactory {
     return ImmutableVariableValue.builder().id(id).value(value).build();
   }
 
-  public static Table table(String tableId, Iterable<String> rows) {
-    return ImmutableTable.builder().tableId(tableId).rows(rows).build();
-  }
-
   public static Questionnaire questionnaire(String id, String formId) {
     return ImmutableQuestionnaire.builder().id(id)
           .metadata(ImmutableQuestionnaireMetadata.builder().formId(formId).build()).build();
