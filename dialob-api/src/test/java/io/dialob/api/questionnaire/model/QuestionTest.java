@@ -16,8 +16,8 @@
 package io.dialob.api.questionnaire.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.dialob.api.proto.ImmutableQuestion;
-import io.dialob.api.proto.Question;
+import io.dialob.api.proto.ActionItem;
+import io.dialob.api.proto.ImmutableActionItem;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
@@ -28,31 +28,31 @@ public class QuestionTest {
   @Test
   public void shouldDeserializePropsToMap() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
-    Question question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":\"extraValue\"}}", Question.class);
+    ActionItem question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":\"extraValue\"}}", ActionItem.class);
     assertEquals("extraValue", question.getProps().get("extraProp"));
-    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":1}}", Question.class);
+    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":1}}", ActionItem.class);
     assertEquals(1, question.getProps().get("extraProp"));
-    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":1.0}}", Question.class);
+    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":1.0}}", ActionItem.class);
     assertEquals(1D, question.getProps().get("extraProp"));
-    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":false}}", Question.class);
+    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":false}}", ActionItem.class);
     assertEquals(false, question.getProps().get("extraProp"));
-    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":true}}", Question.class);
+    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":true}}", ActionItem.class);
     assertEquals(true, question.getProps().get("extraProp"));
-    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":[]}}", Question.class);
+    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\",\"props\":{\"extraProp\":[]}}", ActionItem.class);
     assertEquals(Collections.emptyList(), question.getProps().get("extraProp"));
-    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\"}", Question.class);
+    question = objectMapper.readValue("{\"id\":\"shouldDeserializePropsToMap\",\"type\":\"list\"}", ActionItem.class);
     assertEquals(null, question.getProps());
   }
   @Test
   public void shouldSerializeMapToProps() throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
-    Question question = ImmutableQuestion.builder()
+    ActionItem question = ImmutableActionItem.builder()
       .id("shouldSerializeMapToProps")
       .type("list")
       .putProps("extraProp","extraValue")
       .build();
     assertEquals("{\"id\":\"shouldSerializeMapToProps\",\"type\":\"list\",\"props\":{\"extraProp\":\"extraValue\"}}", objectMapper.writeValueAsString(question));
-    question = ImmutableQuestion.builder().id("q1").type("list").build();
+    question = ImmutableActionItem.builder().id("q1").type("list").build();
     assertEquals("{\"id\":\"q1\",\"type\":\"list\"}", objectMapper.writeValueAsString(question));
   }
 

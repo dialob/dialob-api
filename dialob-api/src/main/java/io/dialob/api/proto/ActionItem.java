@@ -29,12 +29,12 @@ import java.util.Map;
 import java.util.Set;
 
 @Value.Immutable
-@JsonSerialize(as = ImmutableQuestion.class)
-@JsonDeserialize(as = ImmutableQuestion.class)
+@JsonSerialize(as = ImmutableActionItem.class)
+@JsonDeserialize(as = ImmutableActionItem.class)
 @Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 @Value.Style(jdkOnly = true)
-public interface Question extends Serializable {
+public interface ActionItem extends Serializable {
 
   String getId();
 

@@ -53,7 +53,7 @@
                 <importMapping>Response=io.dialob.api.rest.Response</importMapping>
                 <importMapping>Error=io.dialob.api.questionnaire.model.Error</importMapping>
                 <importMapping>Answer=io.dialob.api.questionnaire.model.Answer</importMapping>
-                <importMapping>Question=io.dialob.api.form.model.FormItem</importMapping>
+                <importMapping>ActionItem=io.dialob.api.proto.ActionItem</importMapping>
                 <importMapping>Questionnaire=io.dialob.api.questionnaire.model.Questionnaire</importMapping>
                 <importMapping>QuestionnaireListItem=io.dialob.api.questionnaire.model.QuestionnaireListItem</importMapping>
               </importMappings>

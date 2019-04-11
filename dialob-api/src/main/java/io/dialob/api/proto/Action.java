@@ -81,7 +81,7 @@ public interface Action extends Serializable {
   String getTrace();
 
   @Nullable
-  Question getQuestion();
+  ActionItem getItem();
 
   @Nullable
   Error getError();

@@ -725,7 +725,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Item'
+              $ref: '#/definitions/ActionItem'
         '403':
           description: Access denied
           schema:
@@ -760,7 +760,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Item'
+            $ref: '#/definitions/ActionItem'
         '403':
           description: Access denied
           schema:
@@ -1478,7 +1478,7 @@ definitions:
       valid:
         type: boolean
     title: Metadata
-  Question:
+  ActionItem:
     type: object
     properties:
       activeItem:
@@ -1541,7 +1541,7 @@ definitions:
         type: object
       valueSetId:
         type: string
-    title: Item
+    title: ActionItem
   Questionnaire:
     type: object
     required:
