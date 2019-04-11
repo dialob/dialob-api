@@ -44,6 +44,9 @@ public interface FormItem extends Serializable {
   @NotNull
   String getType();
 
+  @Nullable
+  String getView();
+
   @NotNull
   Map<String, String> getLabel();
 

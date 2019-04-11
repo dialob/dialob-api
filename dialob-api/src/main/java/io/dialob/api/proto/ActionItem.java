@@ -40,6 +40,8 @@ public interface ActionItem extends Serializable {
 
   String getType();
 
+  @Nullable String getView();
+
   @Nullable String getLabel();
 
   @Nullable String getDescription();
