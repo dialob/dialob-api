@@ -10,12 +10,20 @@ import java.io.Serializable;
 import java.util.Optional;
 
 @Value.Immutable
-@JsonSerialize(as = ImmutableExpressionCompilerError.class)
-@JsonDeserialize(as = ImmutableExpressionCompilerError.class)
+@JsonSerialize(as = ImmutableFormValidationError.class)
+@JsonDeserialize(as = ImmutableFormValidationError.class)
 @Gson.TypeAdapters
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 @Value.Style(validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
-public interface ExpressionCompilerError extends Serializable {
+public interface FormValidationError extends Serializable {
+
+  enum Level {
+    INFO,
+    WARNING,
+    ERROR,
+    FATAL
+  }
+
   enum Type {
     VISIBILITY,
     VALIDATION,
@@ -28,7 +36,14 @@ public interface ExpressionCompilerError extends Serializable {
 
   String getMessage();
 
+  @Value.Default
+  default Level getLevel() {
+    return Level.ERROR;
+  }
+
   Type getType();
+
+  Optional<String> getExpression();
 
   Optional<Integer> getStartIndex();
 

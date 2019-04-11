@@ -21,7 +21,7 @@ public interface FormPutResponse extends Response {
 
   String getRev();
 
-  List<ExpressionCompilerError> getErrors();
+  List<FormValidationError> getErrors();
 
   Form getForm();
 }

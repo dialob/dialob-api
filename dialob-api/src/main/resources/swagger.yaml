@@ -1361,7 +1361,7 @@ definitions:
       errors:
         type: array
         items:
-          $ref: '#/definitions/ExpressionCompilerError'
+          $ref: '#/definitions/FormValidationError'
       form:
         $ref: '#/definitions/Form'
       id:
@@ -1599,7 +1599,7 @@ definitions:
       reason:
         type: string
     title: Response
-  ExpressionCompilerError:
+  FormValidationError:
     type: object
     properties:
       endIndex:
@@ -1610,8 +1610,17 @@ definitions:
         type: string
       message:
         type: string
+      expression:
+        type: string
       startIndex:
         type: integer
+      level:
+        type: string
+        enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
       type:
         type: string
         enum:
@@ -1620,7 +1629,7 @@ definitions:
           - REQUIREMENT
           - VARIABLE
           - GENERAL
-    title: ExpressionCompilerError
+    title: FormValidationError
   Table:
     type: object
     required:

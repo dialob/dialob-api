@@ -49,6 +49,7 @@
                 <importMapping>Form=io.dialob.api.form.model.Form</importMapping>
                 <importMapping>ValueSet=io.dialob.api.form.model.ValueSet</importMapping>
                 <importMapping>FormPutResponse=io.dialob.api.form.model.FormPutResponse</importMapping>
+                <importMapping>FormValidationError=io.dialob.api.form.model.FormValidationError</importMapping>
                 <importMapping>FormTag=io.dialob.api.form.model.FormTag</importMapping>
                 <importMapping>Response=io.dialob.api.rest.Response</importMapping>
                 <importMapping>Error=io.dialob.api.questionnaire.model.Error</importMapping>
