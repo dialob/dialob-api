@@ -10,7 +10,7 @@ info:
     name: ASL v2.0
     url: 'https://www.apache.org/licenses/LICENSE-2.0'
 host: api.dialob.io
-basePath: /v1
+basePath: /v2
 tags:
   - name: dialob-form-service
     description: Dialob Form Service
@@ -725,7 +725,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Question'
+              $ref: '#/definitions/Item'
         '403':
           description: Access denied
           schema:
@@ -760,7 +760,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Question'
+            $ref: '#/definitions/Item'
         '403':
           description: Access denied
           schema:
@@ -1541,7 +1541,7 @@ definitions:
         type: object
       valueSetId:
         type: string
-    title: Question
+    title: Item
   Questionnaire:
     type: object
     required:
