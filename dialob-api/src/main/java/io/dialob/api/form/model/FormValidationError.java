@@ -29,7 +29,9 @@ public interface FormValidationError extends Serializable {
     VALIDATION,
     REQUIREMENT,
     VARIABLE,
-    GENERAL
+    GENERAL,
+    CLASSNAME,
+    VALUE_ENTRY
   }
 
   String getItemId();
