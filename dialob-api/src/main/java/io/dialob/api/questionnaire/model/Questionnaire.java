@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.dialob.api.annotation.AllowNulls;
 import io.dialob.api.annotation.Nullable;
+import io.dialob.api.proto.ValueSet;
 import io.dialob.api.validation.WithValidation;
 import org.immutables.gson.Gson;
 import org.immutables.mongo.Mongo;
@@ -73,6 +74,9 @@ public interface Questionnaire extends WithValidation<Questionnaire>, Serializab
 
   @NotNull
   List<VariableValue> getVariableValues();
+
+  @NotNull
+  List<ValueSet> getValueSets();
 
   @Valid
   @NotNull
