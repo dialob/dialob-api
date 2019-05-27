@@ -105,6 +105,9 @@ public interface Questionnaire extends WithValidation<Questionnaire>, Serializab
     @NotNull
     public abstract String getFormId();
 
+    @Nullable
+    public abstract String getFormName();
+
     @NotNull
     @Value.Default
     public Status getStatus() {
