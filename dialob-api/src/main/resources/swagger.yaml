@@ -32,7 +32,7 @@ paths:
       parameters:
         - in: body
           name: form
-          description: form
+          description: New form
           required: true
           schema:
             $ref: '#/definitions/Form'
@@ -103,10 +103,17 @@ paths:
       parameters:
         - name: force
           in: query
-          description: force
+          description: Should update ignore revision number check. (forced update)
           required: false
           type: boolean
           default: false
+          allowEmptyValue: false
+        - in: body
+          name: form
+          description: New form data
+          required: true
+          schema:
+            $ref: '#/definitions/Form'
         - name: formId
           in: path
           description: formId
@@ -114,20 +121,16 @@ paths:
           type: string
         - name: newId
           in: query
-          description: newId
+          description: New name for identifier
           required: false
           type: string
+          allowEmptyValue: false
         - name: oldId
           in: query
-          description: oldId
+          description: Identifier to rename
           required: false
           type: string
-        - in: body
-          name: form
-          description: form
-          required: true
-          schema:
-            $ref: '#/definitions/Form'
+          allowEmptyValue: false
       responses:
         '200':
           description: OK
@@ -151,6 +154,39 @@ paths:
             $ref: '#/definitions/Errors'
         '422':
           description: Unprocessable entity
+          schema:
+            $ref: '#/definitions/Errors'
+      security:
+        - ApiKey: []
+      deprecated: false
+    delete:
+      tags:
+        - dialob-form-service
+      summary: deleteForm
+      operationId: deleteForm
+      produces:
+        - '*/*'
+      parameters:
+        - name: formId
+          in: path
+          description: formId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Response'
+        '209':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Errors'
+        '403':
+          description: Access denied
+          schema:
+            $ref: '#/definitions/Errors'
+        '404':
+          description: Not found
           schema:
             $ref: '#/definitions/Errors'
       security:
@@ -203,12 +239,6 @@ paths:
           description: formId
           required: true
           type: string
-        - in: body
-          name: formTag
-          description: formTag
-          required: true
-          schema:
-            $ref: '#/definitions/FormTag'
         - name: rev
           in: query
           description: rev
@@ -220,6 +250,12 @@ paths:
           required: false
           type: boolean
           default: false
+        - in: body
+          name: tag
+          description: New tag
+          required: true
+          schema:
+            $ref: '#/definitions/FormTag'
       responses:
         '200':
           description: OK
@@ -333,6 +369,26 @@ paths:
       operationId: getQuestionnaires
       produces:
         - application/json
+      parameters:
+        - name: formId
+          in: query
+          description: formId
+          required: false
+          type: string
+        - name: owner
+          in: query
+          description: owner
+          required: false
+          type: string
+        - name: status
+          in: query
+          description: status
+          required: false
+          type: string
+          enum:
+            - NEW
+            - OPEN
+            - COMPLETED
       responses:
         '200':
           description: OK
@@ -363,7 +419,7 @@ paths:
       parameters:
         - in: body
           name: questionnaire
-          description: questionnaire
+          description: New questionnaire object
           required: true
           schema:
             $ref: '#/definitions/Questionnaire'
@@ -429,7 +485,7 @@ paths:
       parameters:
         - in: body
           name: questionnaire
-          description: questionnaire
+          description: Questionnaire object to replace existing state
           required: true
           schema:
             $ref: '#/definitions/Questionnaire'
@@ -542,8 +598,8 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: answer
-          description: answer
+          name: answers
+          description: New answers for questionnaire
           required: true
           schema:
             type: array
@@ -587,17 +643,17 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: body
+          name: answer
+          description: New answer for single question
+          required: true
+          schema:
+            type: object
         - name: answerId
           in: path
           description: answerId
           required: true
           type: string
-        - in: body
-          name: answer
-          description: answer
-          required: true
-          schema:
-            type: object
         - name: questionnaireId
           in: path
           description: questionnaireId
@@ -938,8 +994,8 @@ paths:
         - application/json
       parameters:
         - in: body
-          name: items
-          description: items
+          name: pages
+          description: Updates questionnaire active page
           required: true
           schema:
             $ref: '#/definitions/Items'
@@ -1020,9 +1076,14 @@ paths:
       produces:
         - application/json
       parameters:
+        - name: questionnaireId
+          in: path
+          description: questionnaireId
+          required: true
+          type: string
         - in: body
           name: status
-          description: status
+          description: A new status for questionnaire
           required: true
           schema:
             type: string
@@ -1030,11 +1091,6 @@ paths:
               - NEW
               - OPEN
               - COMPLETED
-        - name: questionnaireId
-          in: path
-          description: questionnaireId
-          required: true
-          type: string
       responses:
         '200':
           description: OK
@@ -1336,6 +1392,8 @@ definitions:
         type: object
         additionalProperties:
           type: string
+      props:
+        type: object
       readOnly:
         type: boolean
       required:
@@ -1351,6 +1409,8 @@ definitions:
         items:
           $ref: '#/definitions/Validation'
       valueSetId:
+        type: string
+      view:
         type: string
     title: FormItem
   FormPutResponse:
@@ -1497,8 +1557,8 @@ definitions:
             - DELETE_ROW
             - REMOVE_ANSWERS
             - RESET
-            - QUESTION
-            - REMOVE_QUESTIONS
+            - ITEM
+            - REMOVE_ITEMS
             - ERROR
             - REMOVE_ERROR
             - VALUE_SET
@@ -1541,6 +1601,8 @@ definitions:
         type: object
       valueSetId:
         type: string
+      view:
+        type: string
     title: ActionItem
   Questionnaire:
     type: object
@@ -1549,7 +1611,7 @@ definitions:
       - context
       - errors
       - metadata
-      - tables
+      - valueSets
       - variableValues
     properties:
       _id:
@@ -1572,10 +1634,10 @@ definitions:
           $ref: '#/definitions/Error'
       metadata:
         $ref: '#/definitions/Metadata'
-      tables:
+      valueSets:
         type: array
         items:
-          $ref: '#/definitions/Table'
+          $ref: '#/definitions/ValueSet'
       variableValues:
         type: array
         items:
@@ -1629,20 +1691,9 @@ definitions:
           - REQUIREMENT
           - VARIABLE
           - GENERAL
+          - CLASSNAME
+          - VALUE_ENTRY
     title: FormValidationError
-  Table:
-    type: object
-    required:
-      - rows
-      - tableId
-    properties:
-      rows:
-        type: array
-        items:
-          type: string
-      tableId:
-        type: string
-    title: Table
   Validation:
     type: object
     required:
