@@ -83,7 +83,7 @@ public interface Form extends WithValidation<Form>, Serializable {
 
   @Valid
   @NotNull
-  List<ValueSet> getValueSets();
+  List<FormValueSet> getValueSets();
 
   /**
    *

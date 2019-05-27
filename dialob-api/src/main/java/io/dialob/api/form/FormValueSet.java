@@ -28,12 +28,12 @@ import java.util.Map;
 
 @Value.Immutable
 @Value.Modifiable
-@JsonSerialize(as = ImmutableValueSet.class)
-@JsonDeserialize(as = ImmutableValueSet.class)
+@JsonSerialize(as = ImmutableFormValueSet.class)
+@JsonDeserialize(as = ImmutableFormValueSet.class)
 @Gson.TypeAdapters(emptyAsNulls = true)
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 @Value.Style(validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
-public interface ValueSet extends Serializable {
+public interface FormValueSet extends Serializable {
 
   @NotNull
   String getId();
@@ -41,10 +41,10 @@ public interface ValueSet extends Serializable {
   List<Entry> getEntries();
 
   @Value.Immutable
-  @Value.Style(typeImmutable = "ImmutableValueSet*", typeModifiable = "ModifiableValueSet*", jdkOnly = true)
+  @Value.Style(typeImmutable = "ImmutableFormValueSet*", typeModifiable = "ModifiableFormValueSet*", jdkOnly = true)
   @Value.Modifiable
-  @JsonSerialize(as = ImmutableValueSetEntry.class)
-  @JsonDeserialize(as = ImmutableValueSetEntry.class)
+  @JsonSerialize(as = ImmutableFormValueSetEntry.class)
+  @JsonDeserialize(as = ImmutableFormValueSetEntry.class)
   @Gson.TypeAdapters(emptyAsNulls = true)
   interface Entry extends Serializable {
 

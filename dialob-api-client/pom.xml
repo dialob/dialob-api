@@ -47,7 +47,8 @@
                 <importMapping>Items=io.dialob.api.rest.Items</importMapping>
                 
                 <importMapping>Form=io.dialob.api.form.Form</importMapping>
-                <importMapping>ValueSet=io.dialob.api.form.ValueSet</importMapping>
+                <importMapping>FormValueSet=io.dialob.api.form.FormValueSet</importMapping>
+                <importMapping>ValueSet=io.dialob.api.proto.ValueSet</importMapping>
                 <importMapping>FormPutResponse=io.dialob.api.form.FormPutResponse</importMapping>
                 <importMapping>FormValidationError=io.dialob.api.form.FormValidationError</importMapping>
                 <importMapping>FormTag=io.dialob.api.form.FormTag</importMapping>
