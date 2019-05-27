@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 ReSys OÜ
+ * Copyright 2018 ReSys OÜ
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.questionnaire.model;
+package io.dialob.api.form;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -27,18 +27,37 @@ import java.io.Serializable;
 
 @Value.Immutable
 @Value.Modifiable
-@JsonSerialize(as = ImmutableContextValue.class)
-@JsonDeserialize(as = ImmutableContextValue.class)
+@JsonSerialize(as = ImmutableVariable.class)
+@JsonDeserialize(as = ImmutableVariable.class)
 @Gson.TypeAdapters
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Value.Style(allParameters = true, validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
-public interface ContextValue extends Serializable {
+@Value.Style(validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
+public interface Variable extends Serializable {
 
   @NotNull
-  String getId();
+  @Value.Parameter
+  String getName();
 
-  @JsonInclude(JsonInclude.Include.ALWAYS)
   @Nullable
-  Object getValue();
+  @Value.Parameter
+  String getExpression();
+
+  @Nullable
+  Object getDefaultValue();
+
+  /**
+   * @return true when this is context variable
+   */
+  @Nullable
+  Boolean getContext();
+
+  /**
+   * @return true when context variable is confidential and should not be sent to client.
+   */
+  @Nullable
+  Boolean getConfidential();
+
+  @Nullable
+  String getContextType();
 
 }

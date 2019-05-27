@@ -13,44 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.form.model;
+package io.dialob.api.form;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.dialob.api.annotation.Nullable;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
+import java.util.Date;
 
 @Value.Immutable
-@Value.Modifiable
-@JsonSerialize(as = ImmutableValueSet.class)
-@JsonDeserialize(as = ImmutableValueSet.class)
-@Gson.TypeAdapters(emptyAsNulls = true)
+@JsonSerialize(as = ImmutableFormTag.class)
+@JsonDeserialize(as = ImmutableFormTag.class)
+@Gson.TypeAdapters
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 @Value.Style(validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
-public interface ValueSet extends Serializable {
+public interface FormTag {
 
   @NotNull
-  String getId();
+  String getFormName();
 
-  List<Entry> getEntries();
+  @NotNull
+  String getName();
 
-  @Value.Immutable
-  @Value.Style(typeImmutable = "ImmutableValueSet*", typeModifiable = "ModifiableValueSet*", jdkOnly = true)
-  @Value.Modifiable
-  @JsonSerialize(as = ImmutableValueSetEntry.class)
-  @JsonDeserialize(as = ImmutableValueSetEntry.class)
-  @Gson.TypeAdapters(emptyAsNulls = true)
-  interface Entry extends Serializable {
+  @Nullable
+  Date getCreated();
 
-    @NotNull
-    String getId();
+  @Nullable
+  String getFormId();
 
-    Map<String, String> getLabel();
-  }
 }

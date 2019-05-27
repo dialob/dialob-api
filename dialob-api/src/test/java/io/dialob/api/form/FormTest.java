@@ -1,4 +1,4 @@
-package io.dialob.api.form.model;
+package io.dialob.api.form;
 
 
 import org.junit.jupiter.api.Assertions;

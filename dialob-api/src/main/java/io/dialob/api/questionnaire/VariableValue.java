@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.dialob.api.form.model;
+package io.dialob.api.questionnaire;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -23,26 +23,22 @@ import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.io.Serializable;
 
 @Value.Immutable
-@JsonSerialize(as = ImmutableFormTag.class)
-@JsonDeserialize(as = ImmutableFormTag.class)
+@Value.Modifiable
+@JsonSerialize(as = ImmutableVariableValue.class)
+@JsonDeserialize(as = ImmutableVariableValue.class)
 @Gson.TypeAdapters
-@JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
-@Value.Style(validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
-public interface FormTag {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Value.Style(allParameters = true, jdkOnly = true)
+public interface VariableValue extends Serializable {
 
   @NotNull
-  String getFormName();
+  String getId();
 
-  @NotNull
-  String getName();
+  @JsonInclude(JsonInclude.Include.ALWAYS)
+  @Nullable Object getValue();
 
-  @Nullable
-  Date getCreated();
-
-  @Nullable
-  String getFormId();
 
 }

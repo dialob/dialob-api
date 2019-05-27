@@ -1,4 +1,4 @@
-package io.dialob.api.questionnaire.model;
+package io.dialob.api.questionnaire;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

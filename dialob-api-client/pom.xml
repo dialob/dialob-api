@@ -46,17 +46,17 @@
                 <importMapping>IdAndRevision=io.dialob.api.rest.IdAndRevision</importMapping>
                 <importMapping>Items=io.dialob.api.rest.Items</importMapping>
                 
-                <importMapping>Form=io.dialob.api.form.model.Form</importMapping>
-                <importMapping>ValueSet=io.dialob.api.form.model.ValueSet</importMapping>
-                <importMapping>FormPutResponse=io.dialob.api.form.model.FormPutResponse</importMapping>
-                <importMapping>FormValidationError=io.dialob.api.form.model.FormValidationError</importMapping>
-                <importMapping>FormTag=io.dialob.api.form.model.FormTag</importMapping>
+                <importMapping>Form=io.dialob.api.form.Form</importMapping>
+                <importMapping>ValueSet=io.dialob.api.form.ValueSet</importMapping>
+                <importMapping>FormPutResponse=io.dialob.api.form.FormPutResponse</importMapping>
+                <importMapping>FormValidationError=io.dialob.api.form.FormValidationError</importMapping>
+                <importMapping>FormTag=io.dialob.api.form.FormTag</importMapping>
                 <importMapping>Response=io.dialob.api.rest.Response</importMapping>
-                <importMapping>Error=io.dialob.api.questionnaire.model.Error</importMapping>
-                <importMapping>Answer=io.dialob.api.questionnaire.model.Answer</importMapping>
+                <importMapping>Error=io.dialob.api.questionnaire.Error</importMapping>
+                <importMapping>Answer=io.dialob.api.questionnaire.Answer</importMapping>
                 <importMapping>ActionItem=io.dialob.api.proto.ActionItem</importMapping>
-                <importMapping>Questionnaire=io.dialob.api.questionnaire.model.Questionnaire</importMapping>
-                <importMapping>QuestionnaireListItem=io.dialob.api.questionnaire.model.QuestionnaireListItem</importMapping>
+                <importMapping>Questionnaire=io.dialob.api.questionnaire.Questionnaire</importMapping>
+                <importMapping>QuestionnaireListItem=io.dialob.api.questionnaire.QuestionnaireListItem</importMapping>
               </importMappings>
             </configuration>
           </execution>
