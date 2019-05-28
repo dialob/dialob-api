@@ -18,7 +18,6 @@ package io.dialob.api.proto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.dialob.api.annotation.Nullable;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
@@ -35,20 +34,7 @@ public interface ValueSet extends Serializable {
 
   String getId();
 
-  List<Entry> getEntries();
+  List<ValueSetEntry> getEntries();
 
-  @Value.Immutable
-  @JsonSerialize(as = ImmutableEntry.class)
-  @JsonDeserialize(as = ImmutableEntry.class)
-  @Gson.TypeAdapters
-  @JsonInclude(JsonInclude.Include.NON_NULL)
-  @Value.Style(allParameters = true)
-  interface Entry extends Serializable {
-
-    String getKey();
-
-    @Nullable String getValue();
-
-  }
 
 }
