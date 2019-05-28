@@ -1265,22 +1265,6 @@ definitions:
       value:
         type: object
     title: ContextValue
-  Entry:
-    type: object
-    required:
-      - id
-    properties:
-      id:
-        type: string
-      key:
-        type: string
-      label:
-        type: object
-        additionalProperties:
-          type: string
-      value:
-        type: string
-    title: FormValueSetEntry
   Error:
     type: object
     properties:
@@ -1720,16 +1704,36 @@ definitions:
       id:
         type: string
     title: FormValueSet
+  FormValueSetEntry:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      label:
+        type: object
+        additionalProperties:
+          type: string
+    title: FormValueSetEntry
   ValueSet:
     type: object
     properties:
       entries:
         type: array
         items:
-          $ref: '#/definitions/FormValueSetEntry'
+          $ref: '#/definitions/ValueSetEntry'
       id:
         type: string
     title: ValueSet
+  ValueSetEntry:
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+    title: ValueSetEntry
   Variable:
     type: object
     required:
