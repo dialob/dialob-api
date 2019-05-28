@@ -1238,6 +1238,72 @@ securityDefinitions:
     name: x-api-key
     in: header
 definitions:
+  ActionItem:
+    type: object
+    properties:
+      activeItem:
+        type: string
+      allowedActions:
+        type: array
+        items:
+          type: string
+          enum:
+            - ANSWER
+            - NEXT
+            - PREVIOUS
+            - GOTO
+            - COMPLETE
+            - ADD_ROW
+            - DELETE_ROW
+            - REMOVE_ANSWERS
+            - RESET
+            - ITEM
+            - REMOVE_ITEMS
+            - ERROR
+            - REMOVE_ERROR
+            - VALUE_SET
+            - REMOVE_VALUE_SETS
+            - NOT_FOUND
+            - SERVER_ERROR
+            - ROWS
+            - SET_VALUE
+            - SET_FAILED
+            - LOCALE
+      answered:
+        type: boolean
+      availableItems:
+        type: array
+        items:
+          type: string
+      className:
+        type: array
+        items:
+          type: string
+      description:
+        type: string
+      disabled:
+        type: boolean
+      id:
+        type: string
+      items:
+        type: array
+        items:
+          type: string
+      label:
+        type: string
+      props:
+        type: object
+      required:
+        type: boolean
+      type:
+        type: string
+      value:
+        type: object
+      valueSetId:
+        type: string
+      view:
+        type: string
+    title: ActionItem
   Answer:
     type: object
     properties:
@@ -1433,6 +1499,63 @@ definitions:
       name:
         type: string
     title: FormTag
+  FormValidationError:
+    type: object
+    properties:
+      endIndex:
+        type: integer
+      expression:
+        type: string
+      index:
+        type: integer
+      itemId:
+        type: string
+      level:
+        type: string
+        enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+      message:
+        type: string
+      startIndex:
+        type: integer
+      type:
+        type: string
+        enum:
+          - VISIBILITY
+          - VALIDATION
+          - REQUIREMENT
+          - VARIABLE
+          - GENERAL
+          - CLASSNAME
+          - VALUE_ENTRY
+    title: FormValidationError
+  FormValueSet:
+    type: object
+    required:
+      - id
+    properties:
+      entries:
+        type: array
+        items:
+          $ref: '#/definitions/FormValueSetEntry'
+      id:
+        type: string
+    title: FormValueSet
+  FormValueSetEntry:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      label:
+        type: object
+        additionalProperties:
+          type: string
+    title: FormValueSetEntry
   IdAndRevision:
     type: object
     required:
@@ -1524,72 +1647,6 @@ definitions:
       valid:
         type: boolean
     title: Metadata
-  ActionItem:
-    type: object
-    properties:
-      activeItem:
-        type: string
-      allowedActions:
-        type: array
-        items:
-          type: string
-          enum:
-            - ANSWER
-            - NEXT
-            - PREVIOUS
-            - GOTO
-            - COMPLETE
-            - ADD_ROW
-            - DELETE_ROW
-            - REMOVE_ANSWERS
-            - RESET
-            - ITEM
-            - REMOVE_ITEMS
-            - ERROR
-            - REMOVE_ERROR
-            - VALUE_SET
-            - REMOVE_VALUE_SETS
-            - NOT_FOUND
-            - SERVER_ERROR
-            - ROWS
-            - SET_VALUE
-            - SET_FAILED
-            - LOCALE
-      answered:
-        type: boolean
-      availableItems:
-        type: array
-        items:
-          type: string
-      className:
-        type: array
-        items:
-          type: string
-      description:
-        type: string
-      disabled:
-        type: boolean
-      id:
-        type: string
-      items:
-        type: array
-        items:
-          type: string
-      label:
-        type: string
-      props:
-        type: object
-      required:
-        type: boolean
-      type:
-        type: string
-      value:
-        type: object
-      valueSetId:
-        type: string
-      view:
-        type: string
-    title: ActionItem
   Questionnaire:
     type: object
     required:
@@ -1647,39 +1704,6 @@ definitions:
       reason:
         type: string
     title: Response
-  FormValidationError:
-    type: object
-    properties:
-      endIndex:
-        type: integer
-      expression:
-        type: string
-      index:
-        type: integer
-      itemId:
-        type: string
-      level:
-        type: string
-        enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-      message:
-        type: string
-      startIndex:
-        type: integer
-      type:
-        type: string
-        enum:
-          - VISIBILITY
-          - VALIDATION
-          - REQUIREMENT
-          - VARIABLE
-          - GENERAL
-          - CLASSNAME
-          - VALUE_ENTRY
-    title: FormValidationError
   Validation:
     type: object
     required:
@@ -1692,30 +1716,6 @@ definitions:
       rule:
         type: string
     title: Validation
-  FormValueSet:
-    type: object
-    required:
-      - id
-    properties:
-      entries:
-        type: array
-        items:
-          $ref: '#/definitions/FormValueSetEntry'
-      id:
-        type: string
-    title: FormValueSet
-  FormValueSetEntry:
-    type: object
-    required:
-      - id
-    properties:
-      id:
-        type: string
-      label:
-        type: object
-        additionalProperties:
-          type: string
-    title: FormValueSetEntry
   ValueSet:
     type: object
     properties:
