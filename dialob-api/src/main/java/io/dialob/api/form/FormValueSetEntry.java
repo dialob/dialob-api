@@ -15,7 +15,7 @@ import java.util.Map;
 @JsonSerialize(as = ImmutableFormValueSetEntry.class)
 @JsonDeserialize(as = ImmutableFormValueSetEntry.class)
 @Gson.TypeAdapters(emptyAsNulls = true)
-interface FormValueSetEntry extends Serializable {
+public interface FormValueSetEntry extends Serializable {
 
   @NotNull
   String getId();
