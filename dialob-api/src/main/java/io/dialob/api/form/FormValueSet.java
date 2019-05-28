@@ -38,19 +38,6 @@ public interface FormValueSet extends Serializable {
   @NotNull
   String getId();
 
-  List<Entry> getEntries();
+  List<FormValueSetEntry> getEntries();
 
-  @Value.Immutable
-  @Value.Style(typeImmutable = "ImmutableFormValueSet*", typeModifiable = "ModifiableFormValueSet*", jdkOnly = true)
-  @Value.Modifiable
-  @JsonSerialize(as = ImmutableFormValueSetEntry.class)
-  @JsonDeserialize(as = ImmutableFormValueSetEntry.class)
-  @Gson.TypeAdapters(emptyAsNulls = true)
-  interface Entry extends Serializable {
-
-    @NotNull
-    String getId();
-
-    Map<String, String> getLabel();
-  }
 }
