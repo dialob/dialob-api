@@ -33,6 +33,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jackson.version>2.9.9</jackson.version>
     <jackson-annotation.version>2.9.9</jackson-annotation.version>
+    <jackson-databind.version>2.9.9.3</jackson-databind.version>
     <spring-data-commons.version>1.13.15.RELEASE</spring-data-commons.version>
     <validation-api.version>1.1.0.Final</validation-api.version>
     <immutables.version>2.7.5</immutables.version>
@@ -161,7 +162,7 @@
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>${jackson.version}</version>
+        <version>${jackson-databind.version}</version>
       </dependency>
       <dependency>
         <groupId>io.swagger.core.v3</groupId>
