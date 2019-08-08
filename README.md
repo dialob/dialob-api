@@ -12,3 +12,11 @@ This documentation provides information how a Dialob Manager can be integrated t
 
 This repository is a Java API for Dialob.
 Technical documentation about APIs and protocols is available [here](https://dialob.github.io/).
+
+# Using client
+
+```java
+ApiClient apiClient = new ApiClient("ApiKey", "<secret-api-key>");
+DialobFormServiceApi formService = apiClient.buildClient(DialobFormServiceApi.class);
+DialobQuestionnaireServiceApi questionnaireService = apiClient.buildClient(DialobQuestionnaireServiceApi.class);
+```
