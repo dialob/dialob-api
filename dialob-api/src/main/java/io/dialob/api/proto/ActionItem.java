@@ -46,6 +46,8 @@ public interface ActionItem extends Serializable {
 
   @Nullable String getDescription();
 
+  @Nullable Boolean getInactive();
+
   @Nullable Boolean getDisabled();
 
   @Nullable Boolean getRequired();
