@@ -375,6 +375,16 @@ paths:
           description: formId
           required: false
           type: string
+        - name: formName
+          in: query
+          description: Search questionnaires by formName. Should not be used together with formId.
+          required: false
+          type: string
+        - name: formTag
+          in: query
+          description: Search questionnaires by formTag. This is ignored, if formName is not set.
+          required: false
+          type: string
         - name: owner
           in: query
           description: owner
