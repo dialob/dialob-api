@@ -15,6 +15,7 @@
  */
 package io.dialob.api.form;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -83,4 +84,11 @@ public interface FormItem extends Serializable {
 
   @Nullable @AllowNulls
   Map<String, Object> getProps();
+
+  @JsonInclude
+  @JsonAnyGetter
+  @AllowNulls
+  @Gson.Ignore
+  Map<String, Object> getAdditionalProperties();
+
 }

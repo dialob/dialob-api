@@ -1,7 +1,10 @@
 package io.dialob.api.form;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.dialob.api.annotation.AllowNulls;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
@@ -21,4 +24,11 @@ public interface FormValueSetEntry extends Serializable {
   String getId();
 
   Map<String, String> getLabel();
+
+  @JsonInclude
+  @JsonAnyGetter
+  @AllowNulls
+  @Gson.Ignore
+  Map<String, Object> getAdditionalProperties();
+
 }
