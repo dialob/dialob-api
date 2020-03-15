@@ -45,4 +45,7 @@ public interface FormTag {
   @Nullable
   String getFormId();
 
+  @Nullable
+  String getDescription();
+
 }
