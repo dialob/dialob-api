@@ -71,6 +71,10 @@ public final class ActionsFactory {
     return ImmutableAction.builder().type(Action.Type.SET_FAILED).id(variableId).value(error).build();
   }
 
+  public static Action setLocale(String locale) {
+    return ImmutableAction.builder().type(Action.Type.SET_LOCALE).value(locale).build();
+  }
+
   public static Actions actions(String rev, Action ...actions) {
     return ImmutableActions.builder().rev(rev).addActions(actions).build();
   }
