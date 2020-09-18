@@ -31,7 +31,10 @@ public interface FormValidationError extends Serializable {
     VARIABLE,
     GENERAL,
     CLASSNAME,
-    VALUE_ENTRY
+    @Deprecated // Unused
+    VALUE_ENTRY,
+    VALUESET,
+    VALUESET_ENTRY
   }
 
   String getItemId();
