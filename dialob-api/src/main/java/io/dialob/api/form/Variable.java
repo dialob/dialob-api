@@ -52,10 +52,10 @@ public interface Variable extends Serializable {
   Boolean getContext();
 
   /**
-   * @return true when context variable is confidential and should not be sent to client.
+   * @return true when context variable can be published and sent to client.
    */
   @Nullable
-  Boolean getConfidential();
+  Boolean getPublished();
 
   @Nullable
   String getContextType();
