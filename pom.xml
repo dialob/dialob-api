@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.dialob</groupId>
   <artifactId>dialob-api-bom</artifactId>
-  <version>2.1.7-SNAPSHOT</version>
+  <version>2.2.0-SNAPSHOT</version>
   <modules>
     <module>dialob-api</module>
     <module>dialob-api-client</module>
@@ -31,20 +31,19 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jackson.version>2.10.5</jackson.version>
-    <jackson-annotation.version>2.10.5</jackson-annotation.version>
-    <jackson-databind.version>2.10.5</jackson-databind.version>
+    <jackson.version>2.11.3</jackson.version>
+    <jackson-annotation.version>2.11.3</jackson-annotation.version>
+    <jackson-databind.version>2.11.3</jackson-databind.version>
     <spring-data-commons.version>1.13.23.RELEASE</spring-data-commons.version>
     <validation-api.version>1.1.0.Final</validation-api.version>
     <immutables.version>2.8.8</immutables.version>
     <junit.version>5.4.0</junit.version>
     <assertj.version>3.8.0</assertj.version>
-    <swagger-core.version>2.0.10</swagger-core.version>
-    <swagger-maven-plugin-version>3.1.8</swagger-maven-plugin-version>
-    <okhttp.version>2.7.5</okhttp.version>
-    <feign.version>9.7.0</feign.version> <!-- generator not compatible with 10.1 -->
-    <feign.form.version>3.7.0</feign.form.version>
-    <apache.oltu.version>1.0.1</apache.oltu.version> <!-- generator not compatible with 1.0.2 -->
+    <swagger-core.version>2.1.5</swagger-core.version>
+    <okhttp.version>4.9.0</okhttp.version>
+    <feign.version>9.7.0</feign.version> <!-- generator not compatible with 11.0 -->
+    <feign.form.version>3.8.0</feign.form.version>
+    <apache.oltu.version>1.0.2</apache.oltu.version> <!-- generator not compatible with 1.0.2 -->
   </properties>
 
   <build>
@@ -52,7 +51,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>3.8.1</version>
         <configuration>
           <compilerVersion>1.8</compilerVersion>
           <source>8</source>
@@ -62,7 +61,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -80,7 +79,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.0.0-M3</version>
+          <version>3.0.0-M5</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -99,9 +98,9 @@
           </executions>
         </plugin>
         <plugin>
-          <groupId>io.swagger</groupId>
+          <groupId>io.swagger.codegen.v3</groupId>
           <artifactId>swagger-codegen-maven-plugin</artifactId>
-          <version>2.4.13</version>
+          <version>3.0.23</version>
         </plugin>
         <plugin>
           <artifactId>maven-release-plugin</artifactId>
@@ -212,12 +211,12 @@
         <scope>test</scope>
       </dependency>        
       <dependency>
-        <groupId>com.squareup.okhttp</groupId>
+        <groupId>com.squareup.okhttp3</groupId>
         <artifactId>okhttp</artifactId>
         <version>${okhttp.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.squareup.okhttp</groupId>
+        <groupId>com.squareup.okhttp3</groupId>
         <artifactId>logging-interceptor</artifactId>
         <version>${okhttp.version}</version>
       </dependency>
@@ -257,6 +256,11 @@
         <groupId>com.google.code.findbugs</groupId>
         <artifactId>jsr305</artifactId>
         <version>3.0.2</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.annotation</groupId>
+        <artifactId>jakarta.annotation-api</artifactId>
+        <version>1.3.5</version>
       </dependency>
 
     </dependencies>
