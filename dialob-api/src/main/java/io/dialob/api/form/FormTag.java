@@ -33,6 +33,11 @@ import java.util.Date;
 @Value.Style(validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
 public interface FormTag {
 
+  enum Type {
+    NORMAL,
+    MUTABLE
+  }
+
   @NotNull
   String getFormName();
 
@@ -47,5 +52,11 @@ public interface FormTag {
 
   @Nullable
   String getDescription();
+
+  @NotNull
+  @Value.Default
+  default Type getType() {
+    return Type.NORMAL;
+  }
 
 }
