@@ -45,6 +45,9 @@ public interface FormTag {
   String getName();
 
   @Nullable
+  String getRefName();
+
+  @Nullable
   Date getCreated();
 
   @Nullable
