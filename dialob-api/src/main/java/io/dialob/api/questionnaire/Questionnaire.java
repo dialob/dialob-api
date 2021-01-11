@@ -127,6 +127,12 @@ public interface Questionnaire extends WithValidation<Questionnaire>, Serializab
     public abstract Date getLastAnswer();
 
     @Nullable
+    public abstract Date getFirstAnswer();
+
+    @Nullable
+    public abstract Date getCompleted();
+
+    @Nullable
     public abstract String getLabel();
 
     @Nullable
