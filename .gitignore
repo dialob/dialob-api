@@ -6,6 +6,7 @@ target/
 *.log*
 .classpath
 .project
+pom.xml.versionsBackup
 .settings/
 node_modules/
 bower_components/
