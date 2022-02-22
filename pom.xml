@@ -14,7 +14,8 @@
   </modules>
   <packaging>pom</packaging>
 
-
+  <url>http://github.com/dialob/dialob-api</url>
+  <description>Form Engine</description>
   <name>dialob-api-parent</name>
   <licenses>
     <license>
