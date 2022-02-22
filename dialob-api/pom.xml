@@ -2,9 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
+    <artifactId>dialob-api-build-parent</artifactId>
     <groupId>io.dialob</groupId>
-    <artifactId>dialob-api-bom</artifactId>
-    <version>2.2.2-SNAPSHOT</version>
+    <version>999-SNAPSHOT</version>
+    <relativePath>../dialob-api-build-parent/pom.xml</relativePath>
   </parent>
   <artifactId>dialob-api</artifactId>
   <packaging>jar</packaging>
