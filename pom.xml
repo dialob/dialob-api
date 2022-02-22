@@ -14,6 +14,8 @@
   </modules>
   <packaging>pom</packaging>
 
+
+  <name>dialob-api-parent</name>
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -21,9 +23,37 @@
     </license>
   </licenses>
   <inceptionYear>2018</inceptionYear>
+
   <organization>
     <name>Copyright 2018 ReSys OÜ</name>
   </organization>
+
+  <developers>
+    <developer>
+      <name>Villu Vaimets</name>
+      <email>villu.vaimets@resys.io</email>
+      <organization>ReSys OÜ</organization>
+      <organizationUrl>http://www.resys.io</organizationUrl>
+    </developer>
+    <developer>
+      <name>Tomi Pakarinen</name>
+      <email>tomi.pakarinen@resys.io</email>
+      <organization>ReSys OÜ</organization>
+      <organizationUrl>http://www.resys.io</organizationUrl>
+    </developer>
+    <developer>
+      <name>Olev Mutso</name>
+      <email>olev.mutso@resys.io</email>
+      <organization>ReSys OÜ</organization>
+      <organizationUrl>http://www.resys.io</organizationUrl>
+    </developer>
+    <developer>
+      <name>Jocelyn Mutso</name>
+      <email>jocelyn.mutso@resys.io</email>
+      <organization>ReSys OÜ</organization>
+      <organizationUrl>http://www.resys.io</organizationUrl>
+    </developer>
+  </developers>
 
   <scm>
     <connection>scm:git:git@github.com:dialob/dialob-api.git</connection>
