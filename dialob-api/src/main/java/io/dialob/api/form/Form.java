@@ -15,28 +15,31 @@
  */
 package io.dialob.api.form;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.dialob.api.annotation.AllowNulls;
-import io.dialob.api.annotation.Nullable;
-import io.dialob.api.validation.WithValidation;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.immutables.gson.Gson;
 import org.immutables.mongo.Mongo;
 import org.immutables.value.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import io.dialob.api.annotation.AllowNulls;
+import io.dialob.api.annotation.Nullable;
+import io.dialob.api.validation.WithValidation;
 
 @Value.Immutable
 @Value.Modifiable
@@ -47,7 +50,7 @@ import java.util.Set;
 @JsonIgnoreProperties({"saving","rules","updated","failed", "serviceCalls"})
 @Value.Style(validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
 @Mongo.Repository("forms")
-public interface Form extends WithValidation<Form>, Serializable {
+public interface Form extends WithValidation<Form>, FormEntity {
 
   @JsonProperty("_id")
   @Gson.Named("_id")
