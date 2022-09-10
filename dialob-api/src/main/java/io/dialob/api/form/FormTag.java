@@ -15,15 +15,18 @@
  */
 package io.dialob.api.form;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.dialob.api.annotation.Nullable;
+import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
-import javax.validation.constraints.NotNull;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import io.dialob.api.annotation.Nullable;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutableFormTag.class)
@@ -31,7 +34,7 @@ import java.util.Date;
 @Gson.TypeAdapters
 @JsonInclude(content = JsonInclude.Include.NON_NULL, value = JsonInclude.Include.NON_EMPTY)
 @Value.Style(validationMethod = Value.Style.ValidationMethod.NONE, jdkOnly = true)
-public interface FormTag {
+public interface FormTag extends FormEntity {
 
   enum Type {
     NORMAL,
