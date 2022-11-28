@@ -20,8 +20,8 @@ import com.google.gson.GsonBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -44,7 +44,7 @@ public class QuestionnaireTest {
     assertEquals(1, exception.getConstraintViolations().size());
     ConstraintViolation constraintViolation = exception.getConstraintViolations().iterator().next();
 
-    assertEquals("may not be null", constraintViolation.getMessage());
+    assertEquals("must not be null", constraintViolation.getMessage());
     assertEquals("metadata", constraintViolation.getPropertyPath().toString());
   }
 
@@ -54,7 +54,7 @@ public class QuestionnaireTest {
     assertEquals(1, exception.getConstraintViolations().size());
     ConstraintViolation constraintViolation = exception.getConstraintViolations().iterator().next();
 
-    assertEquals("may not be null", constraintViolation.getMessage());
+    assertEquals("must not be null", constraintViolation.getMessage());
     assertEquals("metadata.formId", constraintViolation.getPropertyPath().toString());
   }
 }
