@@ -5,7 +5,7 @@
   <parent>
     <artifactId>dialob-api-parent</artifactId>
     <groupId>io.dialob</groupId>
-    <version>3.0.0</version>
+    <version>999-SNAPSHOT</version>
   </parent>
 
   <artifactId>dialob-api-bom</artifactId>
