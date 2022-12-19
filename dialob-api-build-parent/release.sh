@@ -23,18 +23,17 @@ git config --global user.email "$BOT_EMAIL";
 
 # Current and next version
 RELEASE_VERSION=$(cat dialob-api-build-parent/next-release.version)
-echo "next-release.version is $RELEASE_VERSION"
-[[ $RELEASE_VERSION =~ ([^\\.]*)$ ]]
-MINOR_VERSION=`expr ${BASH_REMATCH[1]}`
-echo "MINOR_VERSION=$MINOR_VERSION"
-MAJOR_VERSION=${RELEASE_VERSION:0:`expr ${#RELEASE_VERSION} - ${#MINOR_VERSION}`}
-echo "MAJOR_VERSION=$MAJOR_VERSION"
-NEW_MINOR_VERSION=`expr ${MINOR_VERSION} + 1`
-echo "NEW_MINOR_VERSION=$NEW_MINOR_VERSION"
-NEXT_RELEASE_VERSION=${MAJOR_VERSION}${NEW_MINOR_VERSION}
-echo "NEXT_RELEASE_VERSION=$NEXT_RELEASE_VERSION"
+if [[ $RELEASE_VERSION =~ ([0-9]+)$ ]]; then
+  MINOR_VERSION=`expr ${BASH_REMATCH[1]}`
+  MAJOR_VERSION=${RELEASE_VERSION:0:`expr ${#RELEASE_VERSION} - ${#MINOR_VERSION}`}
+  NEW_MINOR_VERSION=`expr ${MINOR_VERSION} + 1`
+  NEXT_RELEASE_VERSION=${MAJOR_VERSION}${NEW_MINOR_VERSION}
+else
+  echo "Could not parse version : '$RELEASE_VERSION'"
+  exit 1
+fi
 
-echo ${NEXT_RELEASE_VERSION} > dialob-api-build-parent/next-release.version
+echo -n ${NEXT_RELEASE_VERSION} > dialob-api-build-parent/next-release.version
 
 PROJECT_VERSION=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
 
