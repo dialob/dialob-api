@@ -30,8 +30,8 @@ import org.immutables.value.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;

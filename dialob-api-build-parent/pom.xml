@@ -10,18 +10,18 @@
   <packaging>pom</packaging>
 
   <properties>
-    <jackson.version>2.11.4</jackson.version>
-    <jackson-annotation.version>2.11.4</jackson-annotation.version>
-    <jackson-databind.version>2.12.7.1</jackson-databind.version>
+    <jackson.version>2.14.1</jackson.version>
+    <jackson-annotation.version>2.14.1</jackson-annotation.version>
+    <jackson-databind.version>2.14.1</jackson-databind.version>
     
-    <spring-data-commons.version>2.4.1</spring-data-commons.version>
-    <validation-api.version>1.1.0.Final</validation-api.version>
-    <immutables.version>2.8.8</immutables.version>
-    <junit.version>5.7.0</junit.version>
-    <assertj.version>3.18.1</assertj.version>
-    <swagger-core.version>2.1.5</swagger-core.version>
+    <spring-data-commons.version>3.0.0</spring-data-commons.version>
+    <validation-api.version>3.0.2</validation-api.version>
+    <immutables.version>2.9.2</immutables.version>
+    <junit.version>5.9.1</junit.version>
+    <assertj.version>3.23.1</assertj.version>
+    <swagger-core.version>2.2.7</swagger-core.version>
     <okhttp.version>4.9.0</okhttp.version>
-    <feign.version>9.7.0</feign.version> <!-- generator not compatible with 11.0 -->
+    <feign.version>11.6</feign.version> <!-- generator not compatible with 11.0 -->
     <feign.form.version>3.8.0</feign.form.version>
     <apache.oltu.version>1.0.2</apache.oltu.version> <!-- generator not compatible with 1.0.2 -->
   </properties>
@@ -31,17 +31,16 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.10.1</version>
         <configuration>
-          <compilerVersion>1.8</compilerVersion>
-          <source>8</source>
-          <target>8</target>
+          <source>17</source>
+          <target>17</target>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.2.1</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -64,7 +63,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
+          <version>3.2.2</version>
           <executions>
             <execution>
               <id>build-test-jar</id>
@@ -80,11 +79,7 @@
         <plugin>
           <groupId>io.swagger.codegen.v3</groupId>
           <artifactId>swagger-codegen-maven-plugin</artifactId>
-          <version>3.0.23</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>2.5.3</version>
+          <version>3.0.36</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -153,8 +148,8 @@
       </dependency>
 
       <dependency>
-        <groupId>javax.validation</groupId>
-        <artifactId>validation-api</artifactId>
+        <groupId>jakarta.validation</groupId>
+        <artifactId>jakarta.validation-api</artifactId>
         <version>${validation-api.version}</version>
       </dependency>
       <dependency>
@@ -167,13 +162,13 @@
       <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-validator</artifactId>
-        <version>5.4.3.Final</version>
+        <version>7.0.5.Final</version>
         <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.glassfish</groupId>
-        <artifactId>javax.el</artifactId>
-        <version>3.0.0</version>
+        <artifactId>jakarta.el</artifactId>
+        <version>4.0.2</version>
         <scope>test</scope>
       </dependency>
       <dependency>
