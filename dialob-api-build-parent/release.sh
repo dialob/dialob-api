@@ -45,6 +45,10 @@ echo "Dev version: '${PROJECT_VERSION}' release version: '${RELEASE_VERSION}'"
 git commit -am "Release: ${RELEASE_VERSION}"
 git tag -a ${RELEASE_VERSION} -m "release ${RELEASE_VERSION}"
 
+
+# https://issues.sonatype.org/browse/NEXUS-27902
+export MAVEN_OPTS="--add-opens=java.base/java.util=ALL-UNNAMED"
+
 ./mvnw clean deploy -Pdialob-release --settings dialob-api-build-parent/ci-maven-settings.xml -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 ./mvnw versions:set -DnewVersion=${PROJECT_VERSION}
 git commit -am "Release: ${RELEASE_VERSION}"
