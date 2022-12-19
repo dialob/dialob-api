@@ -16,6 +16,7 @@ jobs:
       with:
         java-version: '17'
         cache: 'maven'
+        distribution: 'zulu'
 
     - name: tag - release - upload
       run: ./dialob-api-build-parent/release.sh
