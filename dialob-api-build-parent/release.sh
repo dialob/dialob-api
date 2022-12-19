@@ -25,8 +25,8 @@ echo "Git checkout refname: '${refname}' branch: '${branch}' commit: '${GITHUB_S
 # Current and next version
 RELEASE_VERSION=$(cat dialob-api-build-parent/next-release.version)
 if [[ $RELEASE_VERSION =~ ([0-9]+)$ ]]; then
+  MINOR_VERSION=${BASH_REMATCH[1]}
   echo "Releasing   : '${RELEASE_VERSION}'"
-  MINOR_VERSION=`expr ${BASH_REMATCH[1]}`
   MAJOR_VERSION=${RELEASE_VERSION:0:`expr ${#RELEASE_VERSION} - ${#MINOR_VERSION}`}
   NEW_MINOR_VERSION=`expr ${MINOR_VERSION} + 1`
   NEXT_RELEASE_VERSION=${MAJOR_VERSION}${NEW_MINOR_VERSION}
