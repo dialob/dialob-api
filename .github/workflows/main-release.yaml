@@ -19,6 +19,7 @@ jobs:
         distribution: 'zulu'
 
     - name: tag - release - upload
+      shell: bash
       run: ./dialob-api-build-parent/release.sh
       env:
         CI: false
