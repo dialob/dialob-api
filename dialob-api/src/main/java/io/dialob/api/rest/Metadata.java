@@ -7,8 +7,8 @@ import io.dialob.api.annotation.Nullable;
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 

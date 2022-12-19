@@ -17,7 +17,7 @@ package io.dialob.api.form;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.immutables.gson.Gson;
 import org.immutables.value.Value;

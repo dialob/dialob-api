@@ -22,20 +22,20 @@ git config --global user.name "$BOT_NAME";
 git config --global user.email "$BOT_EMAIL";
 
 # Current and next version
-LAST_RELEASE_VERSION=$(cat dialob-api-build-parent/release.version)
-[[ $LAST_RELEASE_VERSION =~ ([^\\.]*)$ ]]
+RELEASE_VERSION=$(cat dialob-api-build-parent/next-release.version)
+[[ $RELEASE_VERSION =~ ([^\\.]*)$ ]]
 MINOR_VERSION=`expr ${BASH_REMATCH[1]}`
-MAJOR_VERSION=${LAST_RELEASE_VERSION:0:`expr ${#LAST_RELEASE_VERSION} - ${#MINOR_VERSION}`}
+MAJOR_VERSION=${RELEASE_VERSION:0:`expr ${#RELEASE_VERSION} - ${#MINOR_VERSION}`}
 NEW_MINOR_VERSION=`expr ${MINOR_VERSION} + 1`
-RELEASE_VERSION=${MAJOR_VERSION}${NEW_MINOR_VERSION}
+NEXT_RELEASE_VERSION=${MAJOR_VERSION}${NEW_MINOR_VERSION}
 
-echo ${RELEASE_VERSION} > dialob-api-build-parent/release.version
+echo ${NEXT_RELEASE_VERSION} > dialob-api-build-parent/next-release.version
 
 PROJECT_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
 
 echo "Git checkout refname: '${refname}' branch: '${branch}' commit: '${GITHUB_SHA}'"
 echo "Dev version: '${PROJECT_VERSION}' release version: '${RELEASE_VERSION}'"
-echo "Releasing: '${RELEASE_VERSION}', previous: '${LAST_RELEASE_VERSION}'"
+echo "Releasing: '${RELEASE_VERSION}', next: '${NEXT_RELEASE_VERSION}'"
 
 mvn versions:set -DnewVersion=${RELEASE_VERSION}
 git commit -am "Release: ${RELEASE_VERSION}"
