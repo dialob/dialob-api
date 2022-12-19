@@ -23,6 +23,7 @@ git config --global user.email "$BOT_EMAIL";
 
 # Current and next version
 RELEASE_VERSION=$(cat dialob-api-build-parent/next-release.version)
+echo "next-release.version is $RELEASE_VERSION"
 [[ $RELEASE_VERSION =~ ([^\\.]*)$ ]]
 MINOR_VERSION=`expr ${BASH_REMATCH[1]}`
 MAJOR_VERSION=${RELEASE_VERSION:0:`expr ${#RELEASE_VERSION} - ${#MINOR_VERSION}`}
