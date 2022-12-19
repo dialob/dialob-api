@@ -21,13 +21,16 @@ echo "Setup git user name to '$BOT_NAME' and email to '$BOT_EMAIL' GPG key ID $G
 git config --global user.name "$BOT_NAME";
 git config --global user.email "$BOT_EMAIL";
 
+echo "Git checkout refname: '${refname}' branch: '${branch}' commit: '${GITHUB_SHA}'"
 # Current and next version
 RELEASE_VERSION=$(cat dialob-api-build-parent/next-release.version)
 if [[ $RELEASE_VERSION =~ ([0-9]+)$ ]]; then
+  echo "Releasing   : '${RELEASE_VERSION}'"
   MINOR_VERSION=`expr ${BASH_REMATCH[1]}`
   MAJOR_VERSION=${RELEASE_VERSION:0:`expr ${#RELEASE_VERSION} - ${#MINOR_VERSION}`}
   NEW_MINOR_VERSION=`expr ${MINOR_VERSION} + 1`
   NEXT_RELEASE_VERSION=${MAJOR_VERSION}${NEW_MINOR_VERSION}
+  echo "Next version: '${NEXT_RELEASE_VERSION}'"
 else
   echo "Could not parse version : '$RELEASE_VERSION'"
   exit 1
@@ -36,11 +39,7 @@ fi
 echo -n ${NEXT_RELEASE_VERSION} > dialob-api-build-parent/next-release.version
 
 PROJECT_VERSION=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
-
-echo "Git checkout refname: '${refname}' branch: '${branch}' commit: '${GITHUB_SHA}'"
 echo "Dev version: '${PROJECT_VERSION}' release version: '${RELEASE_VERSION}'"
-echo "Releasing   : '${RELEASE_VERSION}'"
-echo "Next version: '${NEXT_RELEASE_VERSION}'"
 
 ./mvnw versions:set -DnewVersion=${RELEASE_VERSION}
 git commit -am "Release: ${RELEASE_VERSION}"
