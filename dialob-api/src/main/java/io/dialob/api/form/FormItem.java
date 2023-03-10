@@ -73,6 +73,12 @@ public interface FormItem extends Serializable {
   @Nullable
   String getActiveWhen();
 
+  @Nullable
+  String getCanAddRowWhen();
+
+  @Nullable
+  String getCanRemoveRowWhen();
+
   @NotNull
   List<Validation> getValidations();
 
