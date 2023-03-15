@@ -1,24 +1,25 @@
 on:
   push:
     branches:
-      - main
+      - main-2.2
 
 name: main - release - java 11
 jobs:
   build:
-    name: Releasing branch - main
+    name: Releasing branch - main-2.2
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@main
-      with:
-        ref: main
+      uses: actions/checkout@v3
 
-    - uses: joschi/setup-jdk@v2
+    - uses: actions/setup-java@v3
       with:
         java-version: '11'
-    
+        cache: 'maven'
+        distribution: 'zulu'
+
     - name: tag - release - upload
+      shell: bash
       run: ./dialob-api-build-parent/release.sh
       env:
         CI: false
